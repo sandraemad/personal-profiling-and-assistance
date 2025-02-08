@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../src/style/variables/variables.css";
+@import "../src/style/header-style/header-style.css";
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";

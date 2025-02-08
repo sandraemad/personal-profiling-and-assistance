@@ -1,0 +1,21 @@
+html:has([class="dark"]) :root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --navbar-bg: #003366;
+  --footer-bg: #003366;
+  --button-bg: #2a9df4;
+  --button-hover-bg: #57a773;
+  --link-color: #003366;
+  --link-hover-color: #57a773;
+}
+
+html:has([class="light"]) :root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --navbar-bg: #003366;
+  --footer-bg: #003366;
+  --button-bg: #2a9df4;
+  --button-hover-bg: #57a773;
+  --link-color: #003366;
+  --link-hover-color: #57a773;
+}

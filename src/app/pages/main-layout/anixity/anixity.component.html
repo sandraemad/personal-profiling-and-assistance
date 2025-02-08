@@ -1,0 +1,353 @@
+<app-header [backgroudClssImge]="'header-Anixity'">
+  <div class="typed-container">
+    <h1 class="typed-cursor">االقلق</h1>
+  </div>
+</app-header>
+<div data-aos="zoom-in">
+  <div class="container position-relative all_contant">
+    <h2>هل تعاني من القلق؟</h2>
+    <p>
+      ​يعطي هذا الاختبار نبذة عن حالتك النفسية و درجة الاكتئاب عندك و لا يعد
+      وسيلة تشخيص دقيقة فلابد من الرجوع للطبيب النفسي لتشخيصك في الأسبوعين
+      الماضيين كم مره تضايقت من الأمور التالية:​​
+    </p>
+    <div class="d-flex">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-12 d-flex justify-content-center align-items-center flex-column"
+          >
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">
+                  1. الشعور بالغضب أو القلق أو الانفعال الشديد
+                </div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q1"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q1"
+                      value="بعض الأيام"
+                      (click)="showResult(1)"
+                    />
+                    بعض الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q1"
+                      value="أكثر من نصف الأيام"
+                      (click)="showResult(2)"
+                    />
+                    أكثر من نصف الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q1"
+                      value="كل يوم تقريباً"
+                      (click)="showResult(3)"
+                    />
+                    كل يوم تقريباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">
+                  2. عدم القدرة على إنهاء القلق أو التحكم فيه
+                </div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q2"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q2"
+                      value="بعض الأيام"
+                      (click)="showResult(1)"
+                    />
+                    بعض الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q2"
+                      value="أكثر من نصف الأيام"
+                      (click)="showResult(2)"
+                    />
+                    أكثر من نصف الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q2"
+                      value="كل يوم تقريباً"
+                      (click)="showResult(3)"
+                    />
+                    كل يوم تقريباً
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">3. القلق المفرط حول كل شيء</div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q3"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q3"
+                      value="بعض الأيام"
+                      (click)="showResult(1)"
+                    />
+                    بعض الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q3"
+                      value="أكثر من نصف الأيام"
+                      (click)="showResult(2)"
+                    />
+                    أكثر من نصف الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q3"
+                      value="كل يوم تقريباً"
+                      (click)="showResult(3)"
+                    />
+                    كل يوم تقريباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">4. الصعوبة في الاسترخاء</div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q4"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q4"
+                      value="بعض الأيام"
+                      (click)="showResult(1)"
+                    />
+                    بعض الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q4"
+                      value="أكثر من نصف الأيام"
+                      (click)="showResult(2)"
+                    />
+                    أكثر من نصف الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q4"
+                      value="كل يوم تقريباً"
+                      (click)="showResult(3)"
+                    />
+                    كل يوم تقريباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">
+                  5. الشعور بالتوتر لدرجة صعوبة البقاء في هدوء
+                </div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q5"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q5"
+                      value="بعض الأيام"
+                      (click)="showResult(1)"
+                    />
+                    بعض الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q5"
+                      value="أكثر من نصف الأيام"
+                      (click)="showResult(2)"
+                    />
+                    أكثر من نصف الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q5"
+                      value="كل يوم تقريباً"
+                      (click)="showResult(3)"
+                    />
+                    كل يوم تقريباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">6. السرعة في الانزعاج أو الانفعال</div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q6"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q6"
+                      value="بعض الأيام"
+                      (click)="showResult(1)"
+                    />
+                    بعض الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q6"
+                      value="أكثر من نصف الأيام"
+                      (click)="showResult(2)"
+                    />
+                    أكثر من نصف الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q6"
+                      value="كل يوم تقريباً"
+                      (click)="showResult(3)"
+                    />
+                    كل يوم تقريباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">
+                  7. الشعور بالخوف كما لو أن شيئاً فظيعاً قد يحدث
+                </div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q7"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q7"
+                      value="بعض الأيام"
+                      (click)="showResult(1)"
+                    />
+                    بعض الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q7"
+                      value="أكثر من نصف الأيام"
+                      (click)="showResult(2)"
+                    />
+                    أكثر من نصف الأيام
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q7"
+                      value="كل يوم تقريباً"
+                      (click)="showResult(3)"
+                    />
+                    كل يوم تقريباً
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button (click)="toggleResult()">إرسال</button>
+        <app-result
+          [score]="cnt"
+          [maxScore]="21"
+          [style.display]="showResultComponent ? 'block' : 'none'"
+        ></app-result>
+      </div>
+
+      <div class="img-test_1 d-none d-lg-block">
+        <img src="/images/tests-depression-illustration-1.svg" alt="" />
+      </div>
+
+      <div class="img-test_3 d-none d-lg-block">
+        <img src="/images/tests-depression-illustration-3.svg" alt="" />
+      </div>
+    </div>
+  </div>
+</div>

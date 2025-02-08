@@ -1,0 +1,453 @@
+<app-header [backgroudClssImge]="'header-depressed'">
+  <div class="typed-container">
+    <h1 class="typed-cursor">الاكتئاب</h1>
+  </div>
+</app-header>
+<div data-aos="zoom-in">
+  <div class="container position-relative all_contant">
+    <h2>هل تعاني من الاكتئاب؟</h2>
+    <p>
+      ​يعطي هذا الاختبار نبذة عن حالتك النفسية و درجة الاكتئاب عندك و لا يعد
+      وسيلة تشخيص دقيقة فلابد من الرجوع للطبيب النفسي لتشخيصك في الأسبوعين
+      الماضيين كم مره تضايقت من الأمور التالية:​​
+    </p>
+    <div class="d-flex">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-12 d-flex justify-content-center align-items-center flex-column"
+          >
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">
+                  1. فقدت الرغبة أو المتعة في ممارسة أمور كنت تستمتع بها؟
+                </div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q1"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q1"
+                      value="قليلاً"
+                      (click)="showResult(1)"
+                    />
+                    قليلاً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q1"
+                      value="أحياناً"
+                      (click)="showResult(2)"
+                    />
+                    أحياناً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q1"
+                      value="غالباً"
+                      (click)="showResult(3)"
+                    />
+                    غالباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">2. تشعر بالحزن العميق وعدم السعادة؟</div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q2"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q2"
+                      value="قليلاً"
+                      (click)="showResult(1)"
+                    />
+                    قليلاً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q2"
+                      value="أحياناً"
+                      (click)="showResult(2)"
+                    />
+                    أحياناً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q2"
+                      value="غالباً"
+                      (click)="showResult(3)"
+                    />
+                    غالباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">
+                  3. لديك صعوبة في النوم أو النوم لفترات طويلة؟
+                </div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q3"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q3"
+                      value="قليلاً"
+                      (click)="showResult(1)"
+                    />
+                    قليلاً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q3"
+                      value="أحياناً"
+                      (click)="showResult(2)"
+                    />
+                    أحياناً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q3"
+                      value="غالباً"
+                      (click)="showResult(3)"
+                    />
+                    غالباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">4. تشعر بالقلق والتعب؟</div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q4"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q4"
+                      value="قليلاً"
+                      (click)="showResult(1)"
+                    />
+                    قليلاً
+                  </label>
+
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q4"
+                      value="أحياناً"
+                      (click)="showResult(2)"
+                    />
+                    أحياناً
+                  </label>
+
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q4"
+                      value="غالباً"
+                      (click)="showResult(3)"
+                    />
+                    غالباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">
+                  5. عانيت من فقدان الشهية أو أكل بشراهة؟
+                </div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q5"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q5"
+                      value="قليلاً"
+                      (click)="showResult(1)"
+                    />
+                    قليلاً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q5"
+                      value="أحياناً"
+                      (click)="showResult(2)"
+                    />
+                    أحياناً
+                  </label>
+
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q5"
+                      value="غالباً"
+                      (click)="showResult(3)"
+                    />
+                    غالباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">
+                  6. تشعر بعدم القدرة على اتخاذ قرارات أو فقدان التركيز؟
+                </div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q6"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q6"
+                      value="قليلاً"
+                      (click)="showResult(1)"
+                    />
+                    قليلاً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q6"
+                      value="أحياناً"
+                      (click)="showResult(2)"
+                    />
+                    أحياناً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q6"
+                      value="غالباً"
+                      (click)="showResult(3)"
+                    />
+                    غالباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">
+                  7. الشعور بالحزن أو الحركة ببطء شديد؟
+                </div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q7"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q7"
+                      value="قليلاً"
+                      (click)="showResult(1)"
+                    />
+                    قليلاً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q7"
+                      value="أحياناً"
+                      (click)="showResult(2)"
+                    />
+                    أحياناً
+                  </label>
+
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q7"
+                      value="غالباً"
+                      (click)="showResult(3)"
+                    />
+                    غالباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">
+                  8.بدأت بالتحدث أو الحركة ببطء شديد بشكل ملحوظ أو العكس بدأت
+                  أشعر بالتوتر وعدم القدرة على الاستقرار
+                </div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q8"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q8"
+                      value="قليلاً"
+                      (click)="showResult(1)"
+                    />
+                    قليلاً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q8"
+                      value="أحياناً"
+                      (click)="showResult(2)"
+                    />
+                    أحياناً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q8"
+                      value="غالباً"
+                      (click)="showResult(3)"
+                    />
+                    غالباً
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">9.أشعر أن الحياة لا تستحق العيش</div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q9"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    أبداً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q9"
+                      value="قليلاً"
+                      (click)="showResult(1)"
+                    />
+                    قليلاً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q9"
+                      value="أحياناً"
+                      (click)="showResult(2)"
+                    />
+                    أحياناً
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      name="q9"
+                      value="غالباً"
+                      (click)="showResult(3)"
+                    />
+                    غالباً
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button (click)="toggleResult()">إرسال</button>
+
+        <app-result
+          [score]="cnt"
+          [maxScore]="27"
+          [style.display]="showResultComponent ? 'block' : 'none'"
+        ></app-result>
+      </div>
+
+      <div class="img-test_1 d-none d-lg-block">
+        <img src="/images/tests-depression-illustration-1.svg" alt="" />
+      </div>
+
+      <div class="img-test_3 d-none d-lg-block">
+        <img src="/images/tests-depression-illustration-3.svg" alt="" />
+      </div>
+    </div>
+  </div>
+</div>

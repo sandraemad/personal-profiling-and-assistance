@@ -1,0 +1,17 @@
+<div class="container mt-4">
+  <div class="progress-container position-relative">
+    <div class="progress">
+      <div class="progress-bar bg-danger" style="width: 25%">شديد</div>
+      <div class="progress-bar bg-warning" style="width: 25%">متوسط</div>
+      <div class="progress-bar bg-warning-subtle text-dark" style="width: 25%">
+        بسيط
+      </div>
+      <div class="progress-bar bg-success" style="width: 25%">طبيعي</div>
+    </div>
+    <div class="score-indicator" [style.right.%]="position">
+      <div class="tooltip-text">
+        <span>{{ score }}</span>
+      </div>
+    </div>
+  </div>
+</div>
