@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SignInComponent } from '../../../auth/pages/sign-in/sign-in.component';
-import { SignUpComponent } from '../../../auth/pages/sign-up/sign-up.component';
 
 @Component({
   selector: 'app-auth-layout',

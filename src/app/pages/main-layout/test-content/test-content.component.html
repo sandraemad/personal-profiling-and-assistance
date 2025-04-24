@@ -1,5 +1,7 @@
 <div class="container">
   <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 w-100">
+
+
     <div class="card-contant col mb-4">
       <div class="card w-100" data-aos="zoom-in" data-aos-delay="100">
         <img
@@ -11,7 +13,12 @@
         <div class="card-body">
           <h5 class="card-title">مهارات الاتصال</h5>
           <p class="card-text">يعرض بعض الاسئلة لتحديد مدى تفاعلك مع الاخرين</p>
-          <button class="card-button">اضغط هنا</button>
+          <a
+            [routerLink]="'/communication-skills'"
+            class="text-decoration-none"
+          >
+            <button class="card-button">اضغط هنا</button>
+          </a>
         </div>
       </div>
     </div>
@@ -26,8 +33,11 @@
         <i class="fas fa-user-circle card-icon"></i>
         <div class="card-body">
           <h5 class="card-title">اعرف شخصيتك</h5>
-          <p class="card-text">من خلالها يمكنك معرفة ما هى شخصيتك</p>
-          <button class="card-button">اضغط هنا</button>
+          <p class="card-text">من خلالها يمكنك معرفة ما هى نوع شخصيتك</p>
+          <!-- <br /> -->
+          <a [routerLink]="'/type-personal'" class="text-decoration-none">
+            <button class="card-button">اضغط هنا</button>
+          </a>
         </div>
       </div>
     </div>
@@ -41,11 +51,15 @@
         />
         <i class="fas fa-brain card-icon"></i>
         <div class="card-body">
-          <h5 class="card-title">القلق</h5>
+          <h5 class="card-title">{{test[0].name}}</h5>
           <p class="card-text">
             يعرض بعض الاسئلة لتحديد هل يوجد القلق ام لا وما هى نسبته
           </p>
-          <button class="card-button">اضغط هنا</button>
+          
+            <a [routerLink]="['/anixity', test[0].id]" class="text-decoration-none">
+              <button class="card-button">اضغط هنا</button>
+            </a>
+          
         </div>
       </div>
     </div>
@@ -59,11 +73,13 @@
         />
         <i class="fa-solid fa-face-frown card-icon"></i>
         <div class="card-body">
-          <h5 class="card-title">اكتئاب</h5>
+          <h5 class="card-title">{{test[1].name}}</h5>
           <p class="card-text">
             يعرض بعض الاسئلة لتحديد هل يوجد اكتئاب ام لا وما هى نسبته
           </p>
-          <button class="card-button">اضغط هنا</button>
+          <a [routerLink]="['/depression', test[1].id]" class="text-decoration-none">
+            <button class="card-button">اضغط هنا</button>
+          </a>
         </div>
       </div>
     </div>

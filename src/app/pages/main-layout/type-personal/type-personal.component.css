@@ -1,0 +1,147 @@
+.all_contant {
+  width: 400px;
+  margin: 50px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #003366;
+  margin: 25px;
+}
+
+.question-container {
+  width: 100%;
+  margin: 20px 0;
+  padding: 15px;
+  border: 2px solid #003366;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.question-container:hover {
+  border-color: #007bff;
+  outline: none;
+  transform: scale(1.03);
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+.question {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #003366;
+  font-size: 22px;
+}
+
+.answers {
+  display: flex;
+  gap: 17px;
+  font-size: 18px;
+}
+
+.answers input[type="radio"] {
+  margin-left: 10px;
+  color: #000;
+}
+
+button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #002244;
+}
+
+.img-test_3 {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+}
+/* ================= Media Queries ================= */
+
+/* Small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+  header {
+    height: 50vh;
+    background-attachment: scroll;
+  }
+
+  .all_contant {
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .answers {
+    gap: 12px;
+    font-size: 16px;
+  }
+
+  .answers label {
+    width: 100%;
+  }
+
+  .footer {
+    padding-top: 100px;
+  }
+
+  .input-container input {
+    padding: 8px 12px;
+  }
+
+  .input-container button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+/* Medium devices (576px to 767.98px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  header {
+    height: 60vh;
+    background-attachment: scroll;
+  }
+
+  .all_contant {
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  .footer {
+    padding-top: 150px;
+  }
+}
+
+/* Large devices (768px and up) */
+@media (min-width: 768px) {
+  header {
+    height: 90vh;
+    background-attachment: fixed;
+  }
+
+  .all_contant {
+    width: 800px;
+  }
+
+  .footer {
+    padding-top: 200px;
+  }
+}
+
+/* Extra large devices (1200px and up) */
+@media (min-width: 1200px) {
+  .all_contant {
+    width: 1000px;
+  }
+}
+

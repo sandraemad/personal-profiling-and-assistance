@@ -1,12 +1,12 @@
 .footer-contain {
-  position: relative; /* لضمان أن جميع العناصر بداخله تتبع الموضع النسبي */
+  position: relative;
 }
 
 .footer {
   margin-top: 60px;
   background-color: #003366;
   width: 100%;
-  padding-top: 200px;
+  padding: 200px 15px 50px;
   clip-path: polygon(
     50% 0,
     100% 26%,
@@ -19,30 +19,31 @@
     0 24%
   );
   border-radius: 10px;
-  z-index: 0; /* لجعلها تحت الشعار */
+  z-index: 0;
   position: relative;
 }
 
 .logo-footer {
-  width: 80px; /* حجم الشعار */
-  height: 80px; /* حجم الشعار */
+  width: 80px;
+  height: 80px;
   position: absolute;
-  right: 50%; /* محاذاة أفقية في المنتصف */
-  transform: translateX(50%); /* لضبط المحاذاة */
-  top: -40px; /* رفع الشعار فوق الـ footer */
-  z-index: 5; /* للتأكد من ظهوره فوق الـ footer */
+  left: 50%;
+  transform: translateX(-50%);
+  top: -40px;
+  z-index: 5;
 }
 
 .footer h3 {
   font-size: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: #fff;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .footer p,
 .footer ul li a {
   color: #fff;
+  font-size: 14px;
 }
 
 .footer ul {
@@ -51,7 +52,7 @@
 }
 
 .footer ul li {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .footer ul li a {
@@ -66,12 +67,12 @@
   position: relative;
   width: 100%;
   max-width: 300px;
-  margin: 0 auto;
+  margin: 20px auto 0;
 }
 
 .input-container input {
   width: 100%;
-  padding: 10px 15px;
+  padding: 10px 100px 10px 15px;
   border: 1px solid #007bff;
   border-radius: 25px;
   background-color: transparent;
@@ -79,24 +80,58 @@
 }
 
 .input-container input::placeholder {
-  color: #aaa;
+  color: rgba(255,255,255,0.7);
 }
 
 .input-container button {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 5px;
   transform: translateY(-50%);
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 8px 15px;
+  padding: 6px 12px;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.input-container button:hover {
-  background-color: #0056b3;
+/* Responsive Fixes */
+@media (max-width: 1199px) {
+  .footer {
+    padding-top: 180px;
+  }
+}
+
+@media (max-width: 991px) {
+  .footer {
+    padding-top: 160px;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    padding-top: 140px;
+    padding-bottom: 40px;
+  }
+  
+  .logo-footer {
+    width: 70px;
+    height: 70px;
+    top: -35px;
+  }
+}
+
+@media (max-width: 575px) {
+  .footer {
+    padding-top: 120px;
+    padding-bottom: 30px;
+  }
+  
+  .logo-footer {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+  }
 }

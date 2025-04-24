@@ -9,6 +9,9 @@
   z-index: 1;
 }
 
+.header-home {
+  background-image: url("/images/home2.png");
+}
 .header-depressed {
   background-image: url("/images/depression.png");
 }
@@ -22,7 +25,7 @@
   background-image: url("/images/about.png");
 }
 .header-tests {
-  background-image: url("/images/test.jpg");
+  background-image: url("/images/tests.png");
 }
 .header-contact {
   background-image: url("/images/contact.jpg");
@@ -95,4 +98,7 @@
   .header {
     height: 50vh; /* Further adjust height for extra small screens */
   }
+}
+a {
+  text-decoration: none;
 }

@@ -1,0 +1,187 @@
+<div class="container light-style flex-grow-1 container-p-y">
+  <h4 class="font-weight-bold py-3 mb-4">إعدادات الحساب</h4>
+  <div class="card overflow-hidden">
+    <div class="row no-gutters row-bordered row-border-light">
+      <div class="col-md-3 pt-0">
+        <div class="list-group list-group-flush account-settings-links">
+          <a
+            class="list-group-item list-group-item-action active"
+            data-toggle="list"
+            href="#account-general"
+            >عام</a
+          >
+          <a
+            class="list-group-item list-group-item-action"
+            data-toggle="list"
+            href="#account-change-password"
+            >تغيير كلمة المرور</a
+          >
+          <a
+            class="list-group-item list-group-item-action"
+            data-toggle="list"
+            href="#account-info"
+            >معلومات</a
+          >
+          <a
+            class="list-group-item list-group-item-action"
+            data-toggle="list"
+            href="#account-social-links"
+            >روابط التواصل الاجتماعي</a
+          >
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="tab-content">
+          <div class="tab-pane fade active show" id="account-general">
+            <div class="card-body media align-items-center">
+              <img
+                src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                alt
+                class="d-block ui-w-80"
+              />
+              <div class="media-body ml-4">
+                <label class="btn btn-outline-primary">
+                  تحميل صورة جديدة
+                  <input type="file" class="account-settings-fileinput" />
+                </label>
+                &nbsp;
+                <button type="button" class="btn btn-default md-btn-flat">
+                  إعادة تعيين
+                </button>
+                <div class="text-light small mt-1">
+                  يُسمح بصيغ JPG، GIF أو PNG. الحد الأقصى للحجم 800 كيلوبايت
+                </div>
+              </div>
+            </div>
+            <hr class="border-light m-0" />
+            <div class="card-body">
+              <div class="form-group">
+                <label class="form-label">اسم المستخدم</label>
+                <input type="text" class="form-control mb-1" value="nmaxwell" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">الاسم</label>
+                <input type="text" class="form-control" value="نيل ماكسويل" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">البريد الإلكتروني</label>
+                <input
+                  type="text"
+                  class="form-control mb-1"
+                  value="nmaxwell@mail.com"
+                />
+                <div class="alert alert-warning mt-3">
+                  بريدك الإلكتروني غير مؤكد. يرجى التحقق من صندوق الوارد.<br />
+                  <a href="javascript:void(0)">إعادة إرسال التأكيد</a>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">الشركة</label>
+                <input type="text" class="form-control" value="شركة Ltd." />
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="account-change-password">
+            <div class="card-body pb-2">
+              <div class="form-group">
+                <label class="form-label">كلمة المرور الحالية</label>
+                <input type="password" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">كلمة المرور الجديدة</label>
+                <input type="password" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">تأكيد كلمة المرور الجديدة</label>
+                <input type="password" class="form-control" />
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="account-info">
+            <div class="card-body pb-2">
+              <div class="form-group">
+                <label class="form-label">السيرة الذاتية</label>
+                <textarea class="form-control" rows="5">
+لوريم إيبسوم هو نص نموذجي يستخدم في صناعة الطباعة والتنضيد.</textarea
+                >
+              </div>
+              <div class="form-group">
+                <label class="form-label">تاريخ الميلاد</label>
+                <input type="text" class="form-control" value="3 مايو 1995" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">البلد</label>
+                <select class="custom-select">
+                  <option>السعودية</option>
+                  <option selected>مصر</option>
+                  <option>قطر</option>
+                  <option>الإمارات</option>
+                  <option>الأردن</option>
+                  <option>لبنان</option>
+                </select>
+              </div>
+            </div>
+            <hr class="border-light m-0" />
+            <div class="card-body pb-2">
+              <h6 class="mb-4">جهات الاتصال</h6>
+              <div class="form-group">
+                <label class="form-label">الهاتف</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="+0 (123) 456 7891"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">الموقع الإلكتروني</label>
+                <input type="text" class="form-control" value />
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="account-social-links">
+            <div class="card-body pb-2">
+              <div class="form-group">
+                <label class="form-label">تويتر</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="https://twitter.com/user"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">فيسبوك</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="https://www.facebook.com/user"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">جوجل+</label>
+                <input type="text" class="form-control" value />
+              </div>
+              <div class="form-group">
+                <label class="form-label">لينكد إن</label>
+                <input type="text" class="form-control" value />
+              </div>
+              <div class="form-group">
+                <label class="form-label">إنستغرام</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="https://www.instagram.com/user"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-right mt-3">
+    <button type="button" class="btn btn-primary">حفظ التغييرات</button>&nbsp;
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active">
+      <button type="button" class="btn btn-default">إلغاء</button>
+    </a>
+  </div>
+</div>

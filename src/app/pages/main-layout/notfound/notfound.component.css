@@ -171,3 +171,84 @@ h1 {
 .wrong-para {
   animation: fadeBlink 2s infinite alternate;
 }
+.card-button {
+  position: absolute;
+  left: 50%;
+  top: 90%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #003366, #2a9df4);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-button:hover {
+  background: linear-gradient(135deg, #2a9df4, #003366);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+/* ----------- Responsive Fixes ----------- */
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    left: 0;
+    padding: 5vmin;
+    text-align: center;
+  }
+
+  .first-four,
+  .second-four {
+    font-size: 25vmin;
+    left: 0;
+    right: 0;
+    position: static;
+  }
+
+  .cog-wheel1,
+  .cog-wheel2 {
+    transform: scale(0.5);
+    margin: -5vmin 0;
+  }
+
+  .cog2 {
+    left: 0;
+    bottom: 0;
+  }
+
+  .wrong-para {
+    position: static;
+    font-size: 24px;
+    padding: 2vmin;
+    animation: none;
+  }
+
+  .card-button {
+    position: static;
+    transform: none;
+    margin-top: 4vmin;
+    padding: 12px 30px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .first-four,
+  .second-four {
+    font-size: 20vmin;
+  }
+
+  .wrong-para {
+    font-size: 18px;
+  }
+
+  .card-button {
+    font-size: 16px;
+    padding: 10px 24px;
+  }
+}

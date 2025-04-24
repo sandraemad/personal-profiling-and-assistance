@@ -125,3 +125,36 @@
     max-width: 48%;
   }
 }
+/* ريسبونسيف */
+@media (max-width: 767px) {
+  /* عند الشاشات الصغيرة (موبايل) */
+  .row-cols-1 {
+    grid-template-columns: repeat(1, 1fr) !important; /* عمود واحد */
+  }
+
+  .card-button {
+    width: 100%;  /* الزر في الموبايل يكون بكامل العرض */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* عند الشاشات المتوسطة (تابلت) */
+  .row-cols-md-2 {
+    grid-template-columns: repeat(2, 1fr) !important; /* عمودين */
+  }
+
+  .card-button {
+    width: 100%;  /* الزر في التابلت يكون بكامل العرض */
+  }
+}
+
+@media (min-width: 1024px) {
+  /* عند الشاشات الكبيرة (ديسكتوب) */
+  .row-cols-xl-4 {
+    grid-template-columns: repeat(4, 1fr) !important; /* أربعة أعمدة */
+  }
+
+  .card-button {
+    width: auto; /* الزر في الديسكتوب يكون بالعرض الطبيعي */
+  }
+}

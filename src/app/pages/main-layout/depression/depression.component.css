@@ -79,3 +79,22 @@ button:hover {
     width: 1000px;
   }
 }
+@media (max-width: 768px) {
+  .answers {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .answer {
+    flex: 1 1 100%;
+  }
+
+  .typed-container h1 {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  .img-test_1,
+  .img-test_3 {
+    display: none !important;   }
+}

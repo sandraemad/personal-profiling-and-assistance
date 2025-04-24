@@ -1,29 +1,74 @@
-<nav class="navbar navbar-expand-lg">
-  <div class="container">
+<nav class="navbar navbar-expand-lg ">
+  <div class="container d-flex justify-content-between align-items-center">
+    <!-- زر الهامبرجر للشاشات الصغيرة -->
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- القائمة الرئيسية -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0">
-        <!-- <button id="dark-mode-toggle">🌙 تبديل الوضع</button> -->
-
         <li class="nav-item pe-4">
-          <a
-            class="nav-link active text-white position-relative pb-0"
-            aria-current="page"
-            href="file:///C:/Users/dell/Downloads/arsha/index.html"
-          >
-            الصفحه الرئيسية</a
-          >
+          <a class="nav-link active text-white position-relative pb-0" [routerLink]="['/login']">
+            تسجيل الدخول
+          </a>
         </li>
         <li class="nav-item pe-4">
-          <a class="nav-link text-white" href="#about">نبذه عنا</a>
+          <a class="nav-link active text-white position-relative pb-0" [routerLink]="['/home']">
+            الصفحه الرئيسية
+          </a>
         </li>
         <li class="nav-item pe-4">
-          <a class="nav-link text-white" href="Contacts.html">اتصل بنا</a>
+          <a class="nav-link text-white" [routerLink]="['/about']" routerLinkActive="router-link-active">
+            نبذه عنا
+          </a>
         </li>
         <li class="nav-item pe-4">
-          <a class="nav-link text-white" href="tests.html">الاختبارات</a>
+          <a class="nav-link text-white" [routerLink]="['/contact-us']">
+            اتصل بنا
+          </a>
+        </li>
+        <li class="nav-item pe-4">
+          <a class="nav-link text-white" [routerLink]="['/tests']">
+            الاختبارات
+          </a>
         </li>
       </ul>
     </div>
+
+    <!-- الشعار -->
     <img src="/images/logo.png" alt="logo" class="logo" />
   </div>
 </nav>
+
+<!-- القائمة الجانبية (Offcanvas) -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">القائمة</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+      <li class="nav-item mb-2">
+        <a class="nav-link" [routerLink]="['/login']">تسجيل الدخول</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link" [routerLink]="['/home']">الصفحه الرئيسية</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link" [routerLink]="['/about']">نبذه عنا</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link" [routerLink]="['/contact-us']">اتصل بنا</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/tests']">الاختبارات</a>
+      </li>
+    </ul>
+  </div>
+</div>

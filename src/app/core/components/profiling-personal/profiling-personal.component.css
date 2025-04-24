@@ -1,0 +1,208 @@
+.ui-w-80 {
+  width: 80px !important;
+  height: auto;
+}
+
+.btn-default {
+  border-color: rgba(24, 28, 33, 0.1);
+  background: rgba(0, 0, 0, 0);
+  color: #4e5155;
+}
+
+label.btn {
+  margin-bottom: 0;
+}
+
+.btn-outline-primary {
+  border-color: #26b4ff;
+  background: transparent;
+  color: #26b4ff;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.text-light {
+  color: #babbbc !important;
+}
+
+.btn-facebook {
+  border-color: rgba(0, 0, 0, 0);
+  background: #3b5998;
+  color: #fff;
+}
+
+.btn-instagram {
+  border-color: rgba(0, 0, 0, 0);
+  background: #000;
+  color: #fff;
+}
+
+.card {
+  background-clip: padding-box;
+  box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+}
+
+.row-bordered {
+  overflow: hidden;
+}
+
+.account-settings-fileinput {
+  position: absolute;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.account-settings-links .list-group-item.active {
+  font-weight: bold !important;
+}
+
+html:not(.dark-style) .account-settings-links .list-group-item.active {
+  background: transparent !important;
+}
+
+.account-settings-multiselect ~ .select2-container {
+  width: 100% !important;
+}
+
+.light-style .account-settings-links .list-group-item {
+  padding: 0.85rem 1.5rem;
+  border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+  color: #4e5155 !important;
+}
+
+.material-style .account-settings-links .list-group-item {
+  padding: 0.85rem 1.5rem;
+  border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.material-style .account-settings-links .list-group-item.active {
+  color: #4e5155 !important;
+}
+
+.dark-style .account-settings-links .list-group-item {
+  padding: 0.85rem 1.5rem;
+  border-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.dark-style .account-settings-links .list-group-item.active {
+  color: #fff !important;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+  color: #4e5155 !important;
+}
+
+.light-style .account-settings-links .list-group-item {
+  padding: 0.85rem 1.5rem;
+  border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+/* التعديلات لجعل التصميم متجاوبًا */
+.container-p-y {
+  padding: 1rem 0;
+}
+
+.account-settings-links .list-group-item {
+  white-space: nowrap;
+}
+
+.card-body.media {
+  flex-direction: column;
+  text-align: center;
+}
+
+.card-body.media .media-body {
+  margin-left: 0 !important;
+  margin-top: 1rem;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Media Queries للشاشات المتوسطة والصغيرة */
+@media (max-width: 992px) {
+  .row.no-gutters.row-bordered {
+    flex-direction: column;
+  }
+  
+  .col-md-3 {
+    width: 100%;
+  }
+  
+  .col-md-9 {
+    width: 100%;
+  }
+  
+  .account-settings-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 1px solid rgba(24, 28, 33, 0.03);
+  }
+  
+  .account-settings-links .list-group-item {
+    padding: 0.5rem 1rem !important;
+    border: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container.light-style {
+    padding: 0 15px;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .text-right {
+    text-align: center;
+  }
+  
+  .text-right .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .text-right .btn + .btn {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-body.media img {
+    width: 60px !important;
+  }
+  
+  .btn-outline-primary,
+  .btn-default {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  h4.font-weight-bold {
+    font-size: 1.25rem;
+  }
+  
+  .form-label {
+    font-size: 0.875rem;
+  }
+  
+  .form-control {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+}

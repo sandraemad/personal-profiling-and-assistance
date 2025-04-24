@@ -1,20 +1,142 @@
+* {
+  direction: rtl;
+}
 .progress-container {
   position: relative;
-  height: 50px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 5%;
 }
 
 .progress {
-  display: flex;
-  height: 100%;
+  height: 30px;
+  border-radius: 15px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+  line-height: 30px;
 }
 
 .score-indicator {
   position: absolute;
-  top: -10px;
-  transform: translateX(50%);
+  top: -25px;
+  right: 15%;
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.score-indicator::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
 }
 .tooltip-text {
-  background-color: #f8f9fa;
-  padding: 5px 10px;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    75% 75%,
+    75% 100%,
+    50% 75%,
+    0% 75%
+  );
+}
+button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 10px 15px;
   border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #002244;
+}
+/* ---------- Responsive Fixes ---------- */
+@media (max-width: 768px) {
+  .progress-container {
+    margin-top: 10%;
+    padding: 0 15px;
+  }
+
+  .progress {
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+  }
+
+  .score-indicator {
+    font-size: 10px;
+    padding: 4px 8px;
+    top: -30px;
+    right: 10%;
+  }
+
+  .score-indicator::after {
+    border-width: 5px;
+    bottom: -5px;
+  }
+
+  .tooltip-text {
+    clip-path: none;
+    background-color: #333;
+    border-radius: 6px;
+  }
+
+  .d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .another_test {
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .another_test button {
+    width: 80%;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  iframe {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-container {
+    margin-top: 12%;
+  }
+
+  .progress {
+    font-size: 10px;
+  }
+
+  .score-indicator {
+    font-size: 9px;
+    right: 5%;
+  }
+
+  .another_test button {
+    width: 90%;
+    font-size: 13px;
+  }
+
+  iframe {
+    height: 250px;
+  }
 }

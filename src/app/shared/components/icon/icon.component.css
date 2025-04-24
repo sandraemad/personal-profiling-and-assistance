@@ -1,0 +1,20 @@
+.profiling {
+  display: flex;
+  flex-direction: column; /* ترتيب العناصر عمودياً */
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  background-color: #fff;
+  height: 70px;
+  position: fixed;
+  top: 25%;
+  right: 0;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  text-align: center;
+  z-index: 1000; /* رفع قيمة z-index لضمان الظهور فوق .header */
+}
+.profiling a {
+  display: block;
+  margin-bottom: 10px; /* إضافة مسافة بين الأيقونات */
+}
+

@@ -78,3 +78,26 @@ button:hover {
     width: 1000px;
   }
 }
+/* Responsive */
+@media (max-width: 768px) {
+  .answers {
+    flex-direction: column;
+  }
+
+  .answer {
+    flex: 1 1 100%;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}

@@ -1,0 +1,28 @@
+<div class="card shadow-sm p-4" style="max-width: 700px; margin: auto; direction: rtl;">
+    <div class="d-flex align-items-center mb-4">
+      <img [src]="'data:image/jpeg;base64,'+userInfo.profilePicture" alt="الصورة الشخصية" class="rounded-circle me-3" width="100" height="100">
+      <div>
+        <h5 class="mb-1">{{userInfo.name}}</h5>
+        <p class="text-muted mb-0">{{userInfo.email}}</p>
+      </div>
+    </div>
+  
+    <ul class="list-group list-group-flush mb-3">
+      <li class="list-group-item d-flex justify-content-between">
+        <span class="fw-bold">التليفون:</span>
+        <span>{{userInfo.phone}}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        <span class="fw-bold">النوع:</span>
+        <span>{{userInfo.gender}}</span>
+      </li>
+    </ul>
+  
+   
+  
+    <div class="d-flex justify-content-between mt-4">
+      <button class="btn btn-success">✏️ تعديل البيانات</button>
+      <button class="btn btn-danger" (click)="Delete()">🗑️ حذف الحساب</button>
+    </div>
+  </div>
+  

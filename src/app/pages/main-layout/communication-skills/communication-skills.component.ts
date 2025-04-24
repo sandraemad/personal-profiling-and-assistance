@@ -1,10 +1,11 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ResultComponent } from '../result/result.component';
 import { HeaderComponent } from '../../../core/components/header/header.component';
+import { IconComponent } from '../../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-communication-skills',
-  imports: [ResultComponent, HeaderComponent],
+  imports: [ResultComponent, HeaderComponent, IconComponent],
   templateUrl: './communication-skills.component.html',
   styleUrl: './communication-skills.component.css',
 })

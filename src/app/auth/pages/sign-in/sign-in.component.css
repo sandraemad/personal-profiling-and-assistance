@@ -385,3 +385,52 @@ form {
     left: 50%;
   }
 }
+.text-center {
+  text-align: center;
+}
+.text-center .btn-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #6c757d;
+  text-decoration: none;
+  border: none;
+  background: none;
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+.text-center .btn-link:hover {
+  text-decoration: underline;
+}
+/* زر الوضع الليلي أعلى يمين */
+.dark-mode-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  color: #000;
+  font-size: 1.6rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.dark-mode .dark-mode-btn{
+  color:#fff;
+}
+.modal-dialog{
+  direction: rtl;
+}
+.modal-content {
+  text-align: right;
+}
+
+.modal-header, .modal-body, .modal-footer, .form-control {
+  direction: rtl;
+}
+
+.close {
+  float: left;
+}
+body.dark-mode .forms-container{
+  background-color: #000;
+  color:#fff ;
+}

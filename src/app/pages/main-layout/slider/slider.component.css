@@ -1,6 +1,6 @@
 .swiper {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   transition: 0.5s;
 }
 
@@ -10,7 +10,7 @@
   max-width: 70%;
   opacity: 0.85;
   visibility: visible;
-  bottom: 50px;
+  bottom: 125px;
   right: 2px;
   transition: ease-in-out 0.5s;
   transform-origin: bottom;
@@ -75,8 +75,107 @@
 
 .swiper .swiper-pagination {
   position: absolute;
-  right: 10%;
+  right: 25%;
   top: 50%;
   transform: translate(50%, -50%);
   z-index: 10;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .swiper .modal-img {
+    max-width: 65%;
+    bottom: 100px;
+  }
+  
+  .swiper .swiper-pagination {
+    right: 20%;
+  }
+}
+
+@media (max-width: 992px) {
+  .swiper {
+    height: 80vh;
+  }
+  
+  .swiper .modal-img {
+    max-width: 60%;
+    bottom: 80px;
+  }
+  
+  .swiper .control {
+    height: 180px;
+    width: 45px;
+  }
+  
+  .swiper .swiper-pagination {
+    right: 15%;
+  }
+}
+
+@media (max-width: 768px) {
+  .swiper {
+    height: 70vh;
+  }
+  
+  .swiper .modal-img {
+    max-width: 70%;
+    bottom: 60px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  
+  .swiper .control {
+    height: 150px;
+    width: 40px;
+    right: 3%;
+  }
+  
+  .swiper .swiper-button-prev {
+    right: 12%;
+    top: 25%;
+  }
+  
+  .swiper .swiper-button-next {
+    right: 12%;
+    top: 75%;
+  }
+  
+  .swiper .swiper-pagination {
+    right: 10%;
+  }
+}
+
+@media (max-width: 576px) {
+  .swiper {
+    height: 60vh;
+  }
+  
+  .swiper .modal-img {
+    max-width: 80%;
+    bottom: 40px;
+  }
+  
+  .swiper .control {
+    height: 120px;
+    width: 35px;
+    right: 4%;
+  }
+  
+  .swiper .swiper-button-prev,
+  .swiper .swiper-button-next {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .swiper .swiper-button-prev::after,
+  .swiper .swiper-button-next::after {
+    width: 20px;
+    height: 20px;
+    font-size: 0.7em;
+  }
+  
+  .swiper .swiper-pagination {
+    right: 8%;
+  }
 }
