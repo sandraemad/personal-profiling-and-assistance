@@ -1,0 +1,182 @@
+.contact {
+    margin: 60px 0px 120px;
+  }
+  
+  .contact .row {
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  
+  .contact-items {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center; /* لضبط العناصر في المنتصف */
+    justify-content: center; /* لضبط المحاذاة الرأسية */
+    height: 100%;
+    gap: 30px;
+  }
+  .contact-items {
+    display: flex;
+    flex-wrap: wrap; /* السماح بالتفاف العناصر */
+    flex-direction: row;
+    align-items: center; /* محاذاة العناصر عموديًا */
+    justify-content: center; /* محاذاة العناصر أفقيًا */
+    gap: 30px;
+  }
+  
+  .contact-item {
+    flex: 1 1 100%; /* تأكد من أن كل عنصر يأخذ مساحة كاملة في الشاشات الصغيرة */
+  }
+  
+  .contact-item {
+    margin: 10px 0;
+    background-color: #f9fbfd;
+    border-radius: 15px;
+    padding: 20px 25px;
+    width: 350px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .contact-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .contact-item i {
+    font-size: 28px;
+    color: #1e90ff;
+  }
+  
+  .contact-item div {
+    text-align: left;
+  }
+  
+  .contact-item p {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+  }
+  
+  .contact-item p.title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .contact-form {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap; /* السماح بتفاف الحقول إذا كان هناك مساحة غير كافية */
+  }
+  
+  .form-row input,
+  .form-row select {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .form-row input:focus,
+  textarea:focus,
+  .form-row select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+  
+  .submit-btn {
+    margin-top: 20px;
+    background: linear-gradient(45deg, #1e90ff, #007bff);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background: linear-gradient(45deg, #0056b3, #003366);
+    transform: scale(1.07);
+  }
+  
+  /* تصميم متجاوب لجميع الأجهزة */
+  
+  /* الهواتف الصغيرة - أقل من 576px (مثل iPhone 5/SE) */
+  @media (max-width: 575.98px) {
+    .contact-form {
+      margin-top: 35px;
+    }
+    
+    .form-row {
+      flex-direction: column; /* ترتيب العناصر عمودياً */
+      gap: 15px; /* إضافة فراغ بين العناصر */
+    }
+  
+    .form-row input,
+    .form-row select {
+      width: 100%; /* تأخذ الحقول العرض الكامل */
+      margin-bottom: 0; /* إزالة أي هوامش سفلية */
+    }
+  }
+  
+  /* الهواتف - من 576px إلى 767px */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .form-row {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .form-row input {
+      width: 100%;
+    }
+  
+    .contact-items {
+      margin-top: 30px;
+    }
+  }
+  
+  /* ملاحظات إضافية:
+  1. استخدمنا (max-width: 575.98px) بدلاً من 576px لتجنب التداخل بين نقاط التوقف
+  2. أضفنا خاصية gap لتحسين المسافات بين العناصر
+  3. استبدلنا flex: 1 1 100% بـ width: 100% لضمان اتساق أفضل
+  4. يمكن إضافة المزيد من نقاط التوقف لشاشات أكبر حسب الحاجة
+  */

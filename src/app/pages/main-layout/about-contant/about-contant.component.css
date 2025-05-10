@@ -1,0 +1,244 @@
+/* الخط الزمني الأساسي */
+.timeline {
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background: #ddd;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* عناصر الخط الزمني */
+.timeline-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.timeline-item:nth-child(even) {
+  justify-content: flex-end;
+}
+
+.timeline-item-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 45%;
+  position: relative;
+  text-align: right;
+  direction: rtl;
+}
+
+/* تحسينات النص */
+.timeline-item-content h2 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #000;
+  font-weight: 600;
+}
+
+.timeline-item-content p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.8;
+  word-break: keep-all;
+  hyphens: none;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.timeline-item-content .date {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 10px;
+}
+
+/* الأيقونات */
+.timeline-item-content .icon {
+  position: absolute;
+  top: 25px;
+  left: -60px;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  z-index: 1;
+  background-color: #6abdcd;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.timeline-item:nth-child(even) .icon {
+  left: auto;
+  right: -60px;
+}
+
+/* Responsive للشاشات المتوسطة */
+@media (max-width: 992px) {
+  .timeline-item-content {
+    width: 50%;
+  }
+  
+  .timeline-item-content p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Responsive للشاشات المتوسطة */
+@media (max-width: 992px) {
+  .timeline-item-content {
+    width: 50%;
+    
+  }
+  
+  .timeline-item-content p {
+    font-size: 0.95rem;
+  }
+  .timeline::before {
+    
+      display: none; /* إخفاء الخط في الشاشات بين 480px و 768px */
+    
+  }
+}
+
+/* Responsive للتابلت */
+@media (max-width: 768px) {
+  .timeline {
+    margin: 60px 0;
+  }
+  
+  .timeline::before {
+   
+    
+      display: none; /* إخفاء الخط في الشاشات بين 480px و 768px */
+    
+  }
+  
+  .timeline-item,
+  .timeline-item:nth-child(even) {
+    justify-content: flex-start;
+    padding-left: 80px;
+  }
+  
+  .timeline-item-content {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 0 30px 20px auto; 
+  }
+  
+  .timeline-item-content .icon {
+    left: 20px;
+    top: 25px;
+    right: auto;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .timeline-item:nth-child(even) .icon {
+    left: 20px;
+    right: auto;
+  }
+}
+
+/* Responsive للشاشات الصغيرة بين 480px و 768px */
+@media (max-width: 768px) and (min-width: 481px) {
+  .timeline {
+    margin: 60px 0;
+    padding: 0 15px;
+  }
+  
+  .timeline::before {
+    display: none; /* إخفاء الخط في الشاشات بين 480px و 768px */
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(even) {
+    padding-left: 60px;
+    margin-bottom: 40px;
+  }
+
+  .timeline-item-content {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 0 30px 20px auto; 
+  }
+
+  .timeline-item-content h2 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .timeline-item-content p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .timeline-item-content .icon {
+    width: 40px;
+    height: 40px;
+    left: 20px;
+    font-size: 1rem;
+  }
+}
+
+/* Responsive للهواتف */
+@media (max-width: 480px) {
+  .timeline {
+    margin: 40px 0;
+    padding: 0 15px;
+  }
+  
+  .timeline::before {
+    display: none; /* إخفاء الخط في الشاشات الصغيرة */
+  }
+  
+  .timeline-item,
+  .timeline-item:nth-child(even) {
+    padding-left: 60px;
+    margin-bottom: 35px;
+  }
+  
+  .timeline-item-content {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 0 30px 20px auto; 
+  }
+  
+  .timeline-item-content h2 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+  
+  .timeline-item-content p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  
+  .timeline-item-content .icon {
+    width: 35px;
+    height: 35px;
+    left: 15px;
+    font-size: 0.9rem;
+  }
+ 
+}

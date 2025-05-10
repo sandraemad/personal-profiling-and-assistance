@@ -1,0 +1,145 @@
+<!-- <nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item pe-4">
+          <a
+            class="nav-link active text-white position-relative pb-0"
+            aria-current="page"
+            [routerLink]="['/login']"
+          >
+            تسجيل الدخول</a
+          >
+        </li>
+        <li class="nav-item pe-4">
+          <a
+            class="nav-link active text-white position-relative pb-0"
+            aria-current="page"
+            [routerLink]="['/home']"
+          >
+            الصفحه الرئيسية</a
+          >
+        </li>
+        <li class="nav-item pe-4">
+          <a
+            class="nav-link text-white"
+            [routerLink]="['/about']"
+            routerLinkActive="router-link-active"
+            >نبذه عنا</a
+          >
+        </li>
+        <li class="nav-item pe-4">
+          <a class="nav-link text-white" [routerLink]="['/contact-us']"
+            >اتصل بنا</a
+          >
+        </li>
+        <li class="nav-item pe-4">
+          <a class="nav-link text-white" [routerLink]="['/tests']"
+            >الاختبارات</a
+          >
+        </li>
+      </ul>
+    </div>
+    <img src="/images/logo.png" alt="logo" class="logo" />
+  </div>
+</nav> -->
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light ">
+  <!-- Container wrapper -->
+  <div class="container-fluid ">
+  
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+    
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        
+
+        @if(isLogin()){
+          <li class="nav-item dropdown">
+            <!-- <a class="nav-link dropdown-toggle d-flex align-items-center"
+               href="#" id="navbarDropdownMenuLink"
+               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            
+              <img
+              *ngIf="profileAdminData.profilePicture"
+              [src]="'data:image/' + profileAdminData.profilePictureType + ';base64,' + profileAdminData.profilePicture"
+                class="rounded-circle"
+                width="45"
+                height="45"
+                alt="Avatar"
+                loading="lazy"
+              />
+            </a> -->
+          
+            <ul class="dropdown-menu dropdown-menu-end text-end" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" [routerLink]="['/profiling']">ملفي</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/setting']">الإعدادات</a></li>
+              <li><a class="dropdown-item" (click)="UserProfileService.loggout()">تسجيل الخروج</a></li>
+            </ul>
+          </li>
+          
+
+        }
+        @else{
+          <li class="nav-item">
+            <a class="nav-link d-flex flex-column text-center " aria-current="page" [routerLink]="['/login']">  <i class="fas fa-right-to-bracket fa-lg my-2"></i><span class="small">تسجيل الدخول</span></a>
+          </li>
+
+        }
+        
+
+
+       
+
+        <li class="nav-item">
+          <a class="nav-link d-flex flex-column text-center " aria-current="page" [routerLink]="['/home']"><i class="fas fa-home fa-lg my-2"></i><span class="small">الصفحه الرئيسية</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex flex-column text-center" aria-current="page" [routerLink]="['/about']"><i class="fas fa-user-friends fa-lg my-2"></i><span class="small">نبذه عنا</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex flex-column text-center" aria-current="page" [routerLink]="['/tests']"><i class="fas fa-brain fa-lg my-2"></i><span class="small">الاختبارات</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex flex-column text-center" aria-current="page" [routerLink]="['/contact-us']"><i class="fas fa-comment-dots fa-lg my-2"></i><span class="small">اتصل بنا</span></a>
+        </li>
+        <li class="nav-item position-relative">
+          <a class="nav-link d-flex flex-column text-center position-relative" aria-current="page">
+            <i class="fas fa-bell fa-lg my-2 position-relative">
+              <span *ngIf="selectedTip"
+                    class="notification-badge position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+              </span>
+            </i>
+            <span class="small">Notifications</span>
+          </a>
+        
+          <!-- Tooltip-like box for the tip -->
+          <div *ngIf="selectedTip"
+               class="position-absolute bg-light text-dark border rounded shadow p-2"
+               style="top: 100%; right: 0; width: 250px; z-index: 1000;">
+            {{ selectedTip }}
+          </div>
+        </li>
+        
+        
+       
+      </ul>
+
+    </div>
+   
+    <div class="logo-container">
+      <a  class="dark-mode-toggle" (click)="changMode(); $event.preventDefault()">
+        <i class="fas fa-cloud-moon" ></i>
+      </a>
+      <img src="/images/logo.png" alt="logo" class="logo" />
+  
+    </div>
+    
+ 
+  </div>
+ 
+</nav>

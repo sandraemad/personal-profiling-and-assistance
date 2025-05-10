@@ -1,0 +1,102 @@
+.footer-contain {
+  position: relative; /* لضمان أن جميع العناصر بداخله تتبع الموضع النسبي */
+}
+
+.footer {
+  margin-top: 60px;
+  background-color: #003366;
+  width: 100%;
+  padding-top: 200px;
+  clip-path: polygon(
+    50% 0,
+    100% 26%,
+    100% 43%,
+    100% 100%,
+    68% 100%,
+    32% 100%,
+    0 100%,
+    0% 43%,
+    0 24%
+  );
+  border-radius: 10px;
+  z-index: 0; /* لجعلها تحت الشعار */
+  position: relative;
+}
+
+.logo-footer {
+  width: 80px; /* حجم الشعار */
+  height: 80px; /* حجم الشعار */
+  position: absolute;
+  right: 50%; /* محاذاة أفقية في المنتصف */
+  transform: translateX(50%); /* لضبط المحاذاة */
+  top: -40px; /* رفع الشعار فوق الـ footer */
+  z-index: 5; /* للتأكد من ظهوره فوق الـ footer */
+}
+
+.footer h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #fff;
+  font-weight: bolder;
+}
+
+.footer p,
+.footer ul li a {
+  color: #fff;
+}
+
+.footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer ul li {
+  margin-bottom: 5px;
+}
+
+.footer ul li a {
+  text-decoration: none;
+}
+
+.footer ul li a:hover {
+  text-decoration: underline;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #007bff;
+  border-radius: 25px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.input-container input::placeholder {
+  color: #aaa;
+}
+
+.input-container button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.input-container button:hover {
+  background-color: #0056b3;
+}

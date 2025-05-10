@@ -1,0 +1,64 @@
+/* التنسيق الأساسي (Mobile First) */
+.typed-container {
+    padding: 80px 10px 40px; /* زيادة الـ padding العلوي لتفادي تداخل اللوجو */
+    text-align: center;
+  }
+  
+  .typed-container h1 {
+    font-size: 30px;
+  }
+  
+  .about {
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .about h2 {
+    font-size: 28px;
+  }
+  
+  .about p {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+  
+  /* تعديلات للشاشات المتوسطة (Tablet) */
+  @media (min-width: 768px) {
+    .typed-container {
+      padding: 100px 15px 60px;
+    }
+    
+    .typed-container h1 {
+      font-size: 36px;
+    }
+    
+    .about {
+      padding: 70px 0;
+    }
+    
+    .about h2 {
+      font-size: 32px;
+    }
+    
+    .about p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0;
+    }
+  }
+  
+  /* تعديلات للشاشات الكبيرة (Desktop) */
+  @media (min-width: 992px) {
+    .typed-container {
+      padding: 120px 20px 80px;
+    }
+    
+    .typed-container h1 {
+      font-size: 42px;
+    }
+    
+    .about {
+      padding: 80px 0;
+    }
+  }

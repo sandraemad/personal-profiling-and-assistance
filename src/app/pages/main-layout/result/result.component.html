@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <div class="progress-container position-relative">
+    <div class="progress">
+      <div class="progress-bar bg-success" style="width: 25%">طبيعي</div>
+      <div class="progress-bar bg-warning-subtle text-dark" style="width: 25%">
+        بسيط
+      </div>
+      <div class="progress-bar bg-warning" style="width: 25%">متوسط</div>
+      <div class="progress-bar bg-danger" style="width: 25%">شديد</div>
+    </div>
+    <div class="score-indicator" id="scoreIndicator">
+      <div class="tooltip-text">
+        <span id="scoreValue">{{ score }}</span>
+      
+      </div>
+    </div>
+  </div>
+</div>
+<ng-content></ng-content>
+
+<div class="d-flex">
+  <div class="another_test p-4">
+    <a [routerLink]="'/tests'" class="text-decoration-none">
+      <button>عمل اختبار اخر</button>
+    </a>
+  </div>
+  <div class="another_test p-4">
+    <a class="text-decoration-none" (click)="findNearestClinic($event)"
+      ><button>اقرب عياده</button></a
+    >
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="w-100">
+      <iframe
+        *ngIf="mapUrl"
+        [src]="mapUrl"
+        width="100%"
+        height="450"
+        style="border: 0"
+        allowfullscreen
+        loading="lazy"
+      >
+      </iframe>
+    </div>
+  </div>
+</div>
+<app-icon></app-icon>

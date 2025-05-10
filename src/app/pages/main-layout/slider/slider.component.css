@@ -1,0 +1,82 @@
+.swiper {
+  width: 100%;
+  height: 90vh;
+  transition: 0.5s;
+}
+
+.swiper .modal-img {
+  position: absolute;
+  z-index: 10;
+  max-width: 70%;
+  opacity: 0.85;
+  visibility: visible;
+  bottom: 125px;
+  right: 2px;
+  transition: ease-in-out 0.5s;
+  transform-origin: bottom;
+}
+
+.swiper.active {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.swiper .control {
+  position: absolute;
+  right: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 200px;
+  width: 50px;
+  z-index: 1000;
+}
+
+.swiper .swiper-button-prev {
+  position: absolute;
+  right: 10%;
+  top: 30%;
+  transform: rotateZ(90deg);
+  width: 25px;
+  height: 25px;
+}
+
+.swiper .swiper-button-next {
+  position: absolute;
+  right: 10%;
+  top: 80%;
+  transform: rotateZ(90deg);
+  width: 25px;
+  height: 25px;
+}
+
+.swiper .swiper-button-prev::after,
+.swiper .swiper-button-next::after {
+  font-size: 0.8em;
+  line-height: 0;
+  width: 25px;
+  height: 25px;
+  background: transparent;
+  border-radius: 50%;
+  transition: 0.5s;
+  color: #1a2448;
+  border: 1px solid #1a2448;
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper .swiper-button-next,
+.swiper .swiper-button-prev {
+  border-radius: 50%;
+  background-color: rgba(26, 36, 72, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.swiper .swiper-pagination {
+  position: absolute;
+  right: 25%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  z-index: 10;
+}

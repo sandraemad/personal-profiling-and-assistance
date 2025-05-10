@@ -1,0 +1,179 @@
+.all_contant {
+  width: 100%;
+  margin: 50px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #003366;
+  margin: 25px;
+}
+
+.question-container {
+  width: 100%;
+  margin: 20px 0;
+  padding: 15px;
+  border: 2px solid #003366;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.question-container:hover {
+  border-color: #007bff;
+  outline: none;
+  transform: scale(1.03);
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+.question {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #003366;
+  font-size: 22px;
+}
+
+.answers {
+  display: flex;
+  gap: 17px;
+  font-size: 18px;
+}
+.answer {
+  margin-left: 10px;
+}
+.answers input[type="radio"] {
+  color: #000;
+}
+
+button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #002244;
+}
+
+.img-test_3 {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+}
+@media (min-width: 640px) {
+  .all_contant {
+    width: 800px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .all_contant {
+    width: 1000%;
+  }
+}
+@media (max-width: 768px) {
+  .answers {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .answer {
+    flex: 1 1 100%;
+  }
+
+  .typed-container h1 {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  .img-test_1,
+  .img-test_3 {
+    display: none !important;   }
+}
+/*********************************************/
+/* خلفية تعتيم */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* صندوق التسجيل */
+.recorder-box {
+  background-color: #dff6fd;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative; /* مهم علشان الزرار يظبط فوقه */
+}
+
+/* باقي تنسيقات الصندوق */
+.recorder-box h2 {
+  color: #112d4e;
+  margin-bottom: 10px;
+}
+.recorder-box img {
+  width: 50px;
+  height: 50px;
+}
+.recorder-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+.recorder-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.start-btn {
+  background-color: #00b894;
+}
+.start-btn:hover {
+  background-color: #019870;
+}
+.stop-btn {
+  background-color: #d63031;
+}
+.stop-btn:hover {
+  background-color: #c0392b;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #d63031;
+  transition: color 0.3s;
+}
+.close-btn:hover {
+  color: #e74c3c;
+}

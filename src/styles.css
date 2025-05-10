@@ -1,0 +1,136 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../src/style/variables/variables.css";
+@import "../src/style/header-style/header-style.css";
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+  body.dark-mode .footer {
+    background-color: #333;
+    color: #ccc;
+  }
+  body.dark-mode .all_contant h2 {
+    color: #0056b3;
+  }
+  body.dark-mode .card-contant p{
+    color:#ccc ;
+  }
+  
+  body.dark-mode .all_contant {
+    background-color: #000;
+    box-shadow: 0 0 10px rgb(246, 243, 243);
+  }
+  
+  body.dark-mode .question-container {
+    box-shadow: 0 0 10px rgb(213, 233, 243);
+  }
+  
+  body.dark-mode .question {
+    color: #0056b3;
+  }
+  body.dark-mode .test-section h2 {
+    color: #0056b3;
+  }
+  
+  body.dark-mode .card-icon,
+  body.dark-mode p {
+    color: #fff;
+  }
+  
+  body.dark-mode .card {
+    background: #000;
+    color: #fff;
+    box-shadow: 0 0 10px rgb(246, 243, 243);
+  }
+  
+  body.dark-mode .card-button {
+    background-color: #007bff;
+    color: #fff;
+  }
+  body.dark-mode .section-title h2{
+  color: #0056b3;
+  }
+  body.dark-mode .contact-item{
+    box-shadow: 0 0 10px rgb(246, 243, 243);
+    background-color: #000;
+  }
+  body.dark-mode .contact-form{
+    background-color: #000;
+    color: #fff;
+    box-shadow: 0 0 10px rgb(246, 243, 243);
+  }
+  body.dark-mode .contact-form input{
+    background-color: #000;
+    color: #fff;
+  }
+  body.dark-mode textarea{
+    background-color: #000;
+    color: #fff;
+  }
+  body.dark-mode .contact-items p{
+    color:#fff !important;;
+  }
+  body.dark-mode .section-title h2 {
+    color: #0056b3;
+  }
+  body.dark-mode .timeline-item-content .icon {
+    background-color: #767474 !important;
+    color: #fff !important;
+  }
+  body.dark-mode .timeline-item-content {
+    background-color: #000;
+    box-shadow: 0 0 10px rgb(246, 243, 243);
+  }
+  
+  body.dark-mode .timeline-item-content h2 {
+    color: #fff !important;
+  }
+  
+  body.dark-mode .timeline-item-content p {
+    color: #ccc !important;
+  }
+  body.dark-mode .collapse p{
+color:#767474 !important;
+  }
+  body.dark-mode .why-us{
+    background-color: #000;
+    box-shadow: 0 0 10px rgb(246, 243, 243);
+      }
+  body.dark-mode #team{
+    background-color: #000;
+  }
+  body.dark-mode #team span{
+color:#333;
+  }
+  /* .dark-mode .container{
+  background-color: #000;
+  color:#fff ;
+} */
+.dark-mode h2{
+  color: #fff;
+}
+.dark-mode .input-field{
+  background-color: #000;
+  color:#fff ;
+  box-shadow: 0 0 10px rgb(246, 243, 243);
+}
+.dark-mode .social-icon{
+color:#fff;}
+.dark-mode h2{
+  color: #fff;
+}
+.dark-mode input{
+  color:#fff ;
+}
+.dark-mode .social-icon{
+color:#fff;}

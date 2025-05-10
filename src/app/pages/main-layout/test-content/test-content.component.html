@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 w-100">
+    @for (tests of test; track tests.id) {
+      <div class="card-contant col mb-4">
+        <div class="card w-100" data-aos="zoom-in" data-aos-delay="100">
+          <img
+          [src]="'data:image/' + tests.imageType + ';base64,' + tests.testImage"
+            alt="صوره الاختبار"
+            class="card-img"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ tests.name }}</h5>
+            <p class="card-text">{{ tests.description }}</p>
+
+            @if(tests.name=='القلق'){
+
+                <button class="card-button" [routerLink]="['/anixity', tests.id]">اضغط هنا</button>
+
+            }
+            @else if (tests.name=="الاكتئاب") {
+              <a [routerLink]="['/depression', tests.id]" class="text-decoration-none">
+                <button class="card-button">اضغط هنا</button>
+              </a>
+            }
+            @else if (tests.name=="مهارات التواصل الاجتماعي") {
+              <a [routerLink]="['/communication-skills', tests.id]" class="text-decoration-none">
+                <button class="card-button">اضغط هنا</button>
+              </a>
+            }
+            @else{
+              <a [routerLink]="['/type-personal', tests.id]" class="text-decoration-none">
+                <button class="card-button">اضغط هنا</button>
+              </a>
+            }
+
+          </div>
+        </div>
+      </div>
+    }
+
+  </div>
+</div>

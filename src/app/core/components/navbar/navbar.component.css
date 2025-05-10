@@ -1,0 +1,55 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 75px;
+  height: 75px;
+}
+
+.dark-mode-toggle {
+  margin-left: 20px; /* مسافة بين اللوجو والأيقونة */
+  color: white;
+  font-size: 28px; /* حجم مناسب للأيقونة */
+  transition: transform 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  transform: rotate(20deg) scale(1.2);
+  color: #000; /* لون ذهبي خفيف عند الهوفر */
+}
+
+
+a{
+  color: #fff;
+  font-size:17px;
+
+}
+li{
+  margin-right:25px;
+}
+.dropdown-menu {
+  background-color: #ffffff !important;
+  color: #000 !important;
+  border-radius: 12px;
+  padding: 10px 0;
+  min-width: 180px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border: none;
+ 
+}
+
+.dropdown-menu .dropdown-item {
+  padding: 10px 20px;
+  color: #333 !important;
+  font-size: 15px;
+  transition: all 0.25s ease-in-out;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #f7f7f7;
+  color: #007bff !important;
+  font-weight: 500;
+  border-right: 3px solid #007bff;
+}

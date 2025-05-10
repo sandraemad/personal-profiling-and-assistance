@@ -1,0 +1,66 @@
+* {
+  direction: rtl;
+}
+.progress-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 5%;
+}
+
+.progress {
+  height: 30px;
+  border-radius: 15px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.score-indicator {
+  position: absolute;
+  top: -25px;
+  right: 15%;
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.score-indicator::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+.tooltip-text {
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    75% 75%,
+    75% 100%,
+    50% 75%,
+    0% 75%
+  );
+}
+button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #002244;
+}

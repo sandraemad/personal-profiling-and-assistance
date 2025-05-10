@@ -1,0 +1,106 @@
+<app-header [backgroudClssImge]="'header-depressed'">
+  <div class="typed-container">
+    <h1 class="typed-cursor">{{testName}}</h1>
+  </div>
+</app-header>
+<div data-aos="zoom-in">
+  <div class="container position-relative all_contant">
+    <h2>هل تعاني من الاكتئاب؟</h2>
+    <p>
+      ​يعطي هذا الاختبار نبذة عن حالتك النفسية و درجة الاكتئاب عندك و لا يعد
+      وسيلة تشخيص دقيقة فلابد من الرجوع للطبيب النفسي لتشخيصك في الأسبوعين
+      الماضيين كم مره تضايقت من الأمور التالية:​​
+    </p>
+    <div class="d-flex">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-12 d-flex justify-content-center align-items-center flex-column"
+          >
+          @for(question of questions ; track $index){
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">{{$index}}
+                 {{question.questioncontent}}
+                </div>
+                <div class="answers">
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      [name]="'q'+question.questionId"
+                      value="أبداً"
+                      (click)="showResult(0)"
+                    />
+                    {{question.choices[0].choiceContent}}
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      [name]="'q'+question.questionId"
+                     
+                      value="قليلاً"
+                      (click)="showResult(1)"
+                    />
+                    {{question.choices[1].choiceContent}}
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      [name]="'q'+question.questionId"
+                      value="أحياناً"
+                      (click)="showResult(2)"
+                    />
+                    {{question.choices[2].choiceContent}}
+                  </label>
+                  <label class="answer">
+                    <input
+                      type="radio"
+                      [name]="'q'+question.questionId"
+                      value="غالباً"
+                      (click)="showResult(3)"
+                    />
+                    {{question.choices[3].choiceContent}}
+                  </label>
+                </div>
+              </div>
+            </div>
+
+          }
+           
+          
+          </div>
+        </div>
+
+        <button (click)="toggleResult()">إرسال</button>
+
+        <app-result
+          [score]="cnt"
+          [maxScore]="27"
+          [style.display]="showResultComponent ? 'block' : 'none'"
+          ><div class="box m-5">
+            <h3>ماذا يعني ذلك ؟</h3>
+            <p>
+              0-4: لا يوجد اكتئاب.
+              <br />
+              5-9: اكتئاب خفيف.
+              <br />
+              10-14: اكتئاب متوسط.
+              <br />
+              15-19: اكتئاب متوسط إلى شديد.
+              <br />
+              20-27: اكتئاب شديد.
+            </p>
+          </div></app-result
+        >
+      </div>
+
+      <div class="img-test_1 d-none d-lg-block">
+        <img src="/images/tests-depression-illustration-1.svg" alt="" />
+      </div>
+
+      <div class="img-test_3 d-none d-lg-block">
+        <img src="/images/tests-depression-illustration-3.svg" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
