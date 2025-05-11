@@ -15,14 +15,14 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
- 
+
           {
             path: 'home',
             loadComponent: () =>
               import('./pages/main-layout/home/home.component').then((m) => m.HomeComponent),
             title: 'الصفحه الرئيسيه',
           },
-          
+
           {
             path: 'contact-us',
             loadComponent: () =>
@@ -50,7 +50,7 @@ export const routes: Routes = [
             title: 'القلق ',
           },
           {
-            path: 'communication-skills/:id',
+            path: 'communication-skills',
             loadComponent: () =>
               import('./pages/main-layout/communication-skills/communication-skills.component').then((m) => m.CommunicationSkillsComponent),
             title: 'مهارات التواصل',
@@ -69,9 +69,9 @@ export const routes: Routes = [
               import('./pages/main-layout/tests/tests.component').then((m) => m.TestsComponent),
             title: 'الاختبارات',
           },
-        
-        
-       
+
+
+
         ],
       },
       {
@@ -105,12 +105,12 @@ export const routes: Routes = [
             path:'audio-recorder',
             component:AudioRecorderComponent
           },
-          { 
+          {
             path: 'rest-password',
             component:ResetPasswordComponent,
             title: 'Reset Password',
           },
-          
+
         ],
       },
       { path: '**', component: NotfoundComponent },
