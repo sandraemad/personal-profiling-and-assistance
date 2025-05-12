@@ -126,9 +126,7 @@
             </div>
           </div>
 
-<button   (click)="showRecorderBox()"  style="padding: 15px 30px; font-size: 18px; border-radius: 10px;  color: white; border: none; cursor: pointer;">
-        افتح سؤال الشعور 🎙️
-      </button>
+
       <button
   (click)="showCamera()"
   style="padding: 15px 30px; font-size: 18px; border-radius: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
@@ -145,6 +143,17 @@
     style="margin-top: 10px; padding: 10px 20px; font-size: 16px; border-radius: 8px; background-color: #f44336; color: white; border: none; cursor: pointer;">
     اغلق الكاميرا ❌
   </button>
+  <div>
+    <button (click)="initiateRecording()" class="btn btn-primary" *ngIf="!recording" style="cursor: pointer;background-color: green;color: white;font-size: 40px;"> Start Recording </button>
+    <button (click)="stopRecording()" class="btn btn-danger" *ngIf="recording" style="cursor: pointer;background-color: red;color: white;font-size: 40px;"> Stop Recording </button>
+    <audio controls="" *ngIf="url">
+    <source [src]="sanitize(url)" type="audio/wav">
+    </audio>
+  </div>
+
+
+
+
 </div>
 
 <div class="img-test_3 d-none d-lg-block">
@@ -152,7 +161,7 @@
 </div>
 </div>
 </div>
-<div class="overlay" *ngIf="showRecorder">
+<!-- <div class="overlay" *ngIf="showRecorder">
 <div class="recorder-box">
 <button class="close-btn" (click)="closeRecorder()">✖️</button>
 <h2>🧠 إنت حاسس بإيه دلوقتي؟</h2>
@@ -167,4 +176,4 @@
 
 </div>
 </div>
-</div>
+</div> -->
