@@ -22,25 +22,22 @@
     <div class="col-lg-7 col-md-12 my-5-md">
       <div data-aos="zoom-in">
         <div class="contact-form">
-          <form action="#">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
             <div class="form-row">
-              <input type="text" placeholder="الاسم" required />
-              <input type="tel" placeholder="رقم الهاتف" required />
+              <input formControlName="name" type="text" placeholder="الاسم" required />
+              <input formControlName="phone" type="tel" placeholder="رقم الهاتف" required />
             </div>
 
             <div class="form-row">
-              <input type="date" required />
-              <input type="time" required />
+              <input formControlName="date" type="date" required class="form-control" />
+              <input formControlName="time" type="time" required class="form-control"/>
             </div>
 
-            <textarea
-              rows="4"
-              cols="50"
-              placeholder="اكتب هناالمشكله"
-            ></textarea>
+            <textarea formControlName="problem" rows="4" cols="50" placeholder="اكتب هنا المشكلة" required></textarea>
 
-            <button type="submit" class="submit-btn">إرسال</button>
+            <button type="submit" class="submit-btn" [disabled]="contactForm.invalid">إرسال</button>
           </form>
+          
         </div>
       </div>
     </div>

@@ -17,32 +17,54 @@ import { CommonModule } from '@angular/common';
 })
 export class AnixityComponent implements OnInit{
   @ViewChild('header', { static: false }) myheader!: ElementRef; // Reference to header element
-
+    private readonly testService=inject(TestService);
+    private readonly activatedRoute=inject(ActivatedRoute);
+    private readonly toastrService=inject(ToastrService);
+    private readonly sanitizer = inject(DomSanitizer); // Inject DomSanitizer
   cnt: number = 0; 
   showResultComponent: boolean = false;
   backgroundClass: string = '';
   result:string='';
+      TestId!:number;
+    questions:IQuestion[]=[];
+    testName!:string;
+    // Removed duplicate declaration of mapUrl
+    
+  mapUrl: SafeResourceUrl | null = null; // Store the map URL safely
 
-  showResult(num: number): void {
-    this.cnt += num; 
+ answersMap: { [key: number]: number } = {}; // questionId -> selectedValue
+
+
+showResult(questionId: number, value: number): void {
+  this.answersMap[questionId] = value;
+}
+
+toggleResult(): void {
+  const unanswered = this.questions.findIndex(q => !(q.questionId in this.answersMap));
+  if (unanswered !== -1) {
+    const questionNumber = unanswered + 1; // علشان تبدأ من 1
+    this.toastrService.error(`السؤال رقم ${questionNumber} لم يتم الإجابة عليه ❌`, 'خطأ');
+    return;
   }
 
-  toggleResult(): void {
-    if(this.cnt>=0&&this.cnt<=4)this.result="قلق بسيط";
-    else if(this.cnt>=5&&this.cnt<=9)this.result="قلق متوسط";
-    else if(this.cnt>=10&&this.cnt<=14)this.result="قلق متوسط الي شديد";
-    else if(this.cnt>=15&&this.cnt<=21)this.result="قلق شديد";
-    this.showResultComponent=true;
-    this.testService.sumitResult(this.result,this.TestId).subscribe({
-    next:(res)=>{
+  // احسب المجموع
+  this.cnt = Object.values(this.answersMap).reduce((a, b) => a + b, 0);
+
+  if (this.cnt >= 0 && this.cnt <= 4) this.result = "قلق بسيط";
+  else if (this.cnt >= 5 && this.cnt <= 9) this.result = "قلق متوسط";
+  else if (this.cnt >= 10 && this.cnt <= 14) this.result = "قلق متوسط إلى شديد";
+  else if (this.cnt >= 15 && this.cnt <= 21) this.result = "قلق شديد";
+
+  this.showResultComponent = true;
+
+  this.testService.sumitResult(this.result, this.TestId).subscribe({
+    next: (res) => {
       this.toastrService.success('تمت العملية بنجاح 🎉', 'نجاح');
       console.log(res);
     }
+  });
+}
 
-
-    })
-   
-    }
 
 
     findNearestClinic(event: Event) {
@@ -70,16 +92,6 @@ export class AnixityComponent implements OnInit{
         alert('Geolocation is not supported by this browser.');
       }
     }
-
-   private readonly testService=inject(TestService);
-    private readonly activatedRoute=inject(ActivatedRoute);
-    private readonly toastrService=inject(ToastrService);
-    TestId!:number;
-    questions:IQuestion[]=[];
-    testName!:string;
-    // Removed duplicate declaration of mapUrl
-    private readonly sanitizer = inject(DomSanitizer); // Inject DomSanitizer
-  mapUrl: SafeResourceUrl | null = null; // Store the map URL safely
 
   
     getAllQuection():void{

@@ -1,34 +1,115 @@
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
-import { ResultComponent } from '../result/result.component';
 import { HeaderComponent } from '../../../core/components/header/header.component';
-import { IconComponent } from '../../../shared/components/icon/icon.component';
 import { NgIf } from '@angular/common';
-import { trigger, transition, style, animate } from '@angular/animations';
 import { AudioService } from '../../../core/services/audio.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import RecordRTC from 'recordrtc';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { TestService } from '../../../core/services/Test/test.service';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { IQuestion } from '../../../core/interface/iquestion';
 
 declare var $: any;
 @Component({
   selector: 'app-communication-skills',
-  imports: [HeaderComponent,NgIf],
+  imports: [HeaderComponent,NgIf,RouterLink],
   templateUrl: './communication-skills.component.html',
   styleUrl: './communication-skills.component.css',
 })
 export class CommunicationSkillsComponent {
   private readonly audioService= inject(AudioService);
+   private readonly testService=inject(TestService);
+      private readonly activatedRoute=inject(ActivatedRoute);
+      private readonly toastrService=inject(ToastrService);
+      TestId!:number;
+      questions:IQuestion[]=[];
+      testName!:string;
+      resultComponent:boolean = false;
+   
+   
+      getAllQuection():void{
+        this.activatedRoute.paramMap.subscribe({
+          next:(res)=>{
+            const idParam = res.get('id');
+          if (idParam !== null) {
+            this.TestId = +idParam;
+            this.testService.getAllQuestions(this.TestId).subscribe({
+              next:(res)=>{
+                console.log(res.data);
+                this.testName=res.data.testName;
+                this.questions=res.data.questions;
+                console.log("objest",res.data.questions)
+             
+    
+              }
+            })
+          }
+        }
+    
+        })
+    
+      }
+      ngOnInit(): void {
+        this.getAllQuection();
+      }
   @ViewChild('header', { static: false }) myheader!: ElementRef; // Reference to header element
 
   cnt: number = 0; // السكور الحالي
+  result: string = ''; // النتيجة النهائية
   showResultComponent: boolean = false; // التحكم في ظهور الـ ResultComponent
+    is_sent = false;
 
-  showResult(num: number): void {
-    this.cnt += num; // تحديث السكور
+
+formDataImage: FormData = new FormData();
+  answersMap: { [key: number]: number } = {}; // لتخزين إجابة كل سؤال
+
+showResult(questionId: number, num: number): void {
+  this.answersMap[questionId] = num;
+}
+
+  
+
+toggleResult(): void {
+  // التحقق من وجود سؤال غير مُجاب
+  const unansweredIndex = this.questions.findIndex(q => !(q.questionId in this.answersMap));
+
+  if (unansweredIndex !== -1) {
+    const questionNumber = unansweredIndex + 1;
+    this.toastrService.error(`السؤال رقم ${questionNumber} لم يتم الإجابة عليه ❌`, 'خطأ');
+    return;
   }
 
-  toggleResult(): void {
-    this.showResultComponent = true; // إظهار الـ component
+  // حسِب السكور من الإجابات
+  this.cnt = 0;
+  Object.values(this.answersMap).forEach(value => {
+    this.cnt += value;
+  });
+
+  // تحديد النتيجة
+  if (this.cnt >= 12 && this.cnt <= 18)
+    this.result = "ضعيف و تحتاج لتحسين مهارات التواصل";
+  else if (this.cnt >= 19 && this.cnt <= 29)
+    this.result = "معقول و محتاج انك تكتسب عادات اكتر لزياده قدرات التواصل";
+  else if (this.cnt >= 30 && this.cnt <= 36)
+    this.result = "ممتاز حافظ على هذه العادات لكى تكتسب مزيد من الاصدقاء";
+
+  console.log(this.result);
+  this.showRecorder=true
+
+}
+
+
+
+handleClick() {
+  if (!this.is_sent) {
+    this.toggleResult();
+      this.is_sent = true;
+      // هنا تقدر تبعت النتيجة للسيرفر لو حبيت
+    
+  } else {
+    this.open(); // تسجيل صوتي مثلاً أو أي عملية بعد الإرسال
   }
+}
+
 
   isRecording: boolean = false;
 
@@ -39,6 +120,57 @@ showRecorder: boolean = false;
 showRecorderBox() {
   this.showRecorder = true;
 }
+
+  recordedTime: string = '';
+  blobUrl: any;
+  teste: any;
+
+  constructor(
+    private sanitizer: DomSanitizer
+  )
+
+
+  {
+    this.audioService
+      .recordingFailed()
+      .subscribe(() => (this.isRecording = false));
+    this.audioService
+      .getRecordedTime()
+      .subscribe(time => (this.recordedTime = time));
+    this.audioService.getRecordedBlob().subscribe(data => {
+      this.teste = data;
+      this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(
+        URL.createObjectURL(data.blob)
+      );
+    });
+  }
+
+  startRecording() {
+    if (!this.isRecording) {
+      this.isRecording = true;
+      this.audioService.startRecording();
+    }
+  }
+
+  abortRecording() {
+    if (this.isRecording) {
+      this.isRecording = false;
+      this.audioService.abortRecording();
+    }
+  }
+
+
+
+  clearRecordedData() {
+    this.blobUrl = null;
+  }
+
+  ngOnDestroy(): void {
+    this.abortRecording();
+  }
+
+
+
 
 /*****************************Video******************************* */
 @ViewChild('video') videoRef!: ElementRef<HTMLVideoElement>;
@@ -68,17 +200,8 @@ showRecorderBox() {
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
             canvas.toBlob((blob) => {
               if (blob) {
-                const formData = new FormData();
-                formData.append('image', blob, 'capture.jpg');
+                this.formDataImage.append('image', blob, 'capture.jpg');
 
-                this.audioService.analzeEmotion(formData).subscribe({
-                  next: (res) => {
-                    console.log('تحليل المشاعر:', res);
-                  },
-                  error: (err) => {
-                    console.error('خطأ في تحليل المشاعر:', err);
-                  }
-                });
               }
             }, 'image/jpeg');
           }
@@ -90,155 +213,87 @@ showRecorderBox() {
   }
 
 
-  closeCamera() {
-    if (this.stream) {
+stop(){
+   if (this.isRecording) {
+      this.audioService.stopRecording();
+      this.isRecording = false;
+    }
+     if (this.stream) {
       this.stream.getTracks().forEach(track => track.stop());
     }
     this.isCameraVisible = false;
-  }
-/**********************Audion************************* */
-  // mediaRecorder!: MediaRecorder;
-  // audioChunks: BlobPart[] = [];
-  // audioBlob!: Blob;
-  // audioUrl: string = '';
+}
+start(){
+  this.showCamera();
+  this.startRecording();
+}
+open() {
+  this.showRecorder = true;
+}
+closeRecorder() {
+  this.showRecorder = false;
+}
 
-  // stopRecording() {
-  //   if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
-  //     this.mediaRecorder.stop();
+  audio: any; // Add this property to fix the error
+image: any;
+  sendAudioToApi() {
+    console.log("button");
+  const formData = new FormData();
+  formData.append('Voice', this.teste.blob, this.teste.title);
 
-  //     // ✨ هنا نوقف كل الـ tracks المرتبطة بالمايك
-  //     const tracks = this.mediaRecorder.stream.getTracks();
-  //     tracks.forEach(track => track.stop());
-  //   }
-  // }
-
-
-  // uploadRecording() {
-  //   if (!this.audioBlob) return;
-
-  //   const audioFile = new File([this.audioBlob], 'recording.wav', { type: 'audio/wav' });
-
-  //   // ✅ تحقق من حجم الملف
-  //   const sizeInKB = audioFile.size / 1024;
-  //   if (sizeInKB < 1) {
-  //     console.warn('⚠️ الملف صغير جدًا، غالبًا التسجيل فاضي.');
-  //     return;
-  //   }
-
-  //   const formData = new FormData();
-  //   formData.append('Voice', audioFile, 'audio.wav');
-
-  //   console.log('🟢 إرسال الملف بحجم:', sizeInKB.toFixed(2), 'KB');
-
-  //   this.audioService.analyzeAudio(formData).subscribe({
-  //     next: (res) => {
-  //       console.log('🎉 تم التحليل بنجاح:', res);
-  //     },
-  //     error: (err) => {
-  //       console.error('❌ خطأ في تحليل الصوت:', err);
-  //     }
-  //   });
-  // }
-
-  // playBeep() {
-  //   const context = new AudioContext();
-  //   const oscillator = context.createOscillator();
-  //   oscillator.type = 'sine';
-  //   oscillator.frequency.setValueAtTime(1000, context.currentTime); // التردد
-  //   oscillator.connect(context.destination);
-  //   oscillator.start();
-  //   oscillator.stop(context.currentTime + 0.3); // 0.3 ثانية
-  // }
-
-  // async startRecording() {
-  //   this.playBeep(); // ✨ تشغيل البوق قبل التسجيل
-
-  //   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-  //   this.mediaRecorder = new MediaRecorder(stream);
-
-  //   this.audioChunks = [];
-  //   this.mediaRecorder.ondataavailable = event => {
-  //     this.audioChunks.push(event.data);
-  //   };
-
-  //   this.mediaRecorder.onstop = () => {
-  //     this.audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
-  //     this.audioUrl = URL.createObjectURL(this.audioBlob);
-  //   };
-
-  //   this.mediaRecorder.start();
-  // }
-  // closeRecorder() {
-  //   this.showRecorder = false;
-  // }
-
-  private sanitizer = inject(DomSanitizer);
-
-
-  private record: any; // RecordRTC type
-  recording: boolean = false;
-  url: string = '';
-  safeUrl: SafeUrl | null = null;
-  error: string = '';
-  /**
-   * Start recording the audio stream
-   */
-  initiateRecording(): void {
-    this.recording = true;
-    const mediaConstraints = { audio: true, video: false };
-
-    navigator.mediaDevices.getUserMedia(mediaConstraints)
-      .then(this.successCallback)
-      .catch(this.errorCallback);
-  }
-
-  /**
-   * Callback after successful permission and stream
-   */
-  private successCallback = (stream: MediaStream): void => {
-    const options: RecordRTC.Options = {
-      mimeType: 'audio/wav', // تأكد أنها من الأنواع المدعومة
-      numberOfAudioChannels: 1, // 1 أو 2 حسب المتاح
-      sampleRate: 16000
-    };
-
-    const StereoAudioRecorder = RecordRTC.StereoAudioRecorder;
-
-    // هنا نحول الخيارات إلى any لتجاوز التحقق الصارم مؤقتًا إذا استمر الخطأ
-    this.record = new StereoAudioRecorder(stream, options as any);
-    this.record.record();
-  };
-
-
-  /**
-   * Stop the recording process
-   */
-  stopRecording(): void {
-    this.recording = false;
-    if (this.record) {
-      this.record.stop(this.processRecording);
+  this.audioService.audioRecord(formData).subscribe({
+    next: (res) => {
+      console.log('API Response:', res.KeyVoice);
+      this.audio=res.KeyVoice;
+    },
+    error: (err) => {
+      console.error('API Error:', err);
     }
-  }
+  });
+   this.audioService.analzeEmotion(this.formDataImage).subscribe({
+                  next: (res) => {
+                    console.log('تحليل المشاعر:', res.KeyImage);
+                    this.image=res.KeyImage;
+                  },
+                  error: (err) => {
+                    console.error('خطأ في تحليل المشاعر:', err);
+                  }
+                });
 
-  /**
-   * Process the recorded audio blob
-   */
-  private processRecording = (blob: Blob): void => {
-    this.url = URL.createObjectURL(blob);
-    this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(this.url);
-    console.log("Blob recorded:", blob);
-    console.log("URL:", this.url);
-  };
 
-  /**
-   * Error handler for media access
-   */
-  private errorCallback = (err: any): void => {
-    console.error('Error accessing media devices.', err);
-    this.error = 'Cannot access microphone or play audio in this browser.';
-    this.recording = false;
-  };
 
+                this.showRecorder = false;
+                this.resultComponent=true;
+                
+
+}
+mapUrl: SafeResourceUrl | null = null; // Store the map URL safely
+
+    findNearestClinic(event: Event) {
+      event.preventDefault(); // Prevent default anchor behavior
+  
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+  
+            // Google Maps URL without API key
+            const googleMapsUrl = `https://www.google.com/maps?q=therapy+clinic&ll=${lat},${lng}&z=14&output=embed`;
+  
+            // Sanitize the URL for Angular security
+            this.mapUrl =
+              this.sanitizer.bypassSecurityTrustResourceUrl(googleMapsUrl);
+          },
+          (error) => {
+            console.error('Geolocation error:', error);
+            alert('Location access is required to find the nearest clinic.');
+          }
+        );
+      } else {
+        alert('Geolocation is not supported by this browser.');
+      }
+    }
 
 
 }

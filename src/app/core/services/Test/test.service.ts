@@ -20,7 +20,7 @@ export class TestService {
     return this.httpClient.post(`https://personal-profiling-and-assistance-app.runasp.net/api/UserTests/AddTestToUser/${id}`,
       {
         "date":now,
-        "result":`key:${res}`
+        "result":`Key:${res}`
       }
 
     )

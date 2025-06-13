@@ -1,32 +1,69 @@
-<div class="container-fluid" [ngClass]="{ 'sign-up-mode': isSignUpMode }"[formGroup]="LoginForm" (ngSubmit)="submitLoginForm()">
+<div class="container-fluid" [ngClass]="{ 'sign-up-mode': isSignUpMode }" [formGroup]="LoginForm" (ngSubmit)="submitLoginForm()">
+
+  <!-- زر الوضع الليلي أعلى يمين -->
+  <a href="#" class="dark-mode-btn" (click)="changMode(); $event.preventDefault()">
+    <i class="fas fa-moon"></i>
+  </a>
+
   <div class="forms-container">
     <div class="signin-signup">
+
       <!-- نموذج تسجيل الدخول -->
-      <form class="sign-in-form" *ngIf="!isSignUpMode">
+      <form class="sign-in-form" *ngIf="!isSignUpMode" [formGroup]="LoginForm" (ngSubmit)="submitLoginForm()">
         <h2 class="title">تسجيل الدخول</h2>
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="email" placeholder="البريد الإلكتروني"  formControlName="email"/>
+          <input type="email" placeholder="البريد الإلكتروني" formControlName="email" />
         </div>
+        @if(LoginForm.get('email')?.errors&&LoginForm.get('email')?.touched){
+          <div class="input-error-message">
+          @if (LoginForm.get('email')?.getError('required'))
+          {
+            <span class="me-1">❗️</span>
+
+              <span>الايميل مطلوب</span>
+          }
+          @else if (LoginForm.get('email')?.getError('email'))
+          {
+            <span class="me-1">❗️</span>
+
+              <span>البريد الإلكتروني غير صحيح</span>
+          }
+      </div>
+
+            }
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="كلمة المرور" formControlName="password"/>
+          <input type="password" placeholder="كلمة المرور" formControlName="password" />
         </div>
+  @if(LoginForm.get('password')?.errors && LoginForm.get('password')?.touched){
+  <div class="input-error-message">
+    <span class="me-1">❗️</span>
+
+    @if(LoginForm.get('password')?.getError('required'))
+    {
+      <span>كلمة المرور مطلوبة</span>
+    }
+    
+     @else if(LoginForm.get('password')?.getError('pattern'))
+    {
+<span>كلمة المرور يجب أن تكون 6 أحرف على الأقل، وتحتوي على حرف كبير، صغير، رقم، ورمز خاص</span>
+    }
+   
+   
+  </div>
+}
+
+
+
+
         <input type="submit" value="دخول" class="btn solid" />
-         <div class="text-center">
+        <div class="text-center">
           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
             هل نسيت كلمة المرور؟
           </button>
         </div>
-        <p class="social-text">
-          أو قم بتسجيل الدخول باستخدام المنصات الاجتماعية
-        </p>
-        <div class="social-media">
-          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-        </div>
+
       </form>
 
       <!-- نموذج التسجيل -->
@@ -34,25 +71,53 @@
         <h2 class="title">إنشاء حساب</h2>
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="text" placeholder="اسم المستخدم" formControlName="userName"/>
+          <input type="text" placeholder="اسم المستخدم" formControlName="userName" />
         </div>
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="email" placeholder="البريد الإلكتروني" formControlName="email"/>
+          <input type="email" placeholder="البريد الإلكتروني" formControlName="email" />
         </div>
+           @if(RegisterForm.get('email')?.errors&&RegisterForm.get('email')?.touched){
+          <div class="input-error-message">
+          @if (RegisterForm.get('email')?.getError('required'))
+          {
+            <span class="me-1">❗️</span>
+
+              <span>الايميل مطلوب</span>
+          }
+          @else if (RegisterForm.get('email')?.getError('email'))
+          {
+            <span class="me-1">❗️</span>
+
+              <span>البريد الإلكتروني غير صحيح</span>
+          }
+      </div>
+
+            }
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="كلمة المرور" formControlName="password"/>
+          <input type="password" placeholder="كلمة المرور" formControlName="password" />
         </div>
+          @if(RegisterForm.get('password')?.errors && RegisterForm.get('password')?.touched){
+  <div class="input-error-message">
+    <span class="me-1">❗️</span>
+
+    @if(RegisterForm.get('password')?.getError('required'))
+    {
+      <span>كلمة المرور مطلوبة</span>
+    }
+    
+     @else if(RegisterForm.get('password')?.getError('pattern'))
+    {
+<span>كلمة المرور يجب أن تكون 6 أحرف على الأقل، وتحتوي على حرف كبير، صغير، رقم، ورمز خاص</span>
+    }
+
+  </div>
+}
         <input type="submit" class="btn" value="إنشاء حساب" />
-        <p class="social-text">أو قم بإنشاء حساب باستخدام المنصات الاجتماعية</p>
-        <div class="social-media">
-          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-        </div>
+       
       </form>
+
     </div>
   </div>
 
@@ -61,21 +126,56 @@
       <div class="content">
         <h3>جديد هنا؟</h3>
         <p>أهلاً بك! قم بإنشاء حساب جديد للانضمام إلى مجتمعنا.</p>
-        <button class="btn transparent" (click)="toggleSignUp()">
-          إنشاء حساب
-        </button>
+        <button class="btn transparent" (click)="toggleSignUp()">إنشاء حساب</button>
       </div>
       <img src="/images/log.svg" class="image" alt="صورة تسجيل الدخول" />
     </div>
+
     <div class="panel right-panel">
       <div class="content">
         <h3>أحد أعضائنا؟</h3>
         <p>مرحباً بعودتك! قم بتسجيل الدخول للمتابعة.</p>
-        <button class="btn transparent" (click)="toggleSignIn()">
-          تسجيل الدخول
-        </button>
+        <button class="btn transparent" (click)="toggleSignIn()">تسجيل الدخول</button>
       </div>
       <img src="/images/register.svg" class="image" alt="صورة التسجيل" />
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" dir="rtl">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">هل نسيت كلمة المرور؟</h5>
+        <button type="button" class="close ml-0 mr-auto" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-groups">
+          <label for="email" class="mb-2">البريد الإلكتروني</label>
+          <input 
+            type="email" 
+            class="form-control text-right" 
+            [(ngModel)]="emailModel" 
+            placeholder="ادخل بريدك الإلكتروني"
+            name="email"
+            id="email"
+          >
+          <div *ngIf="emailNotFoundError" class="alert alert-danger mt-2 text-right">
+            {{ emailNotFoundError }}
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">غلق</button>
+        <button type="button" class="btn btn-primary" (click)="sendOtp()">ارسال الكود</button>
+      </div>
+
     </div>
   </div>
 </div>

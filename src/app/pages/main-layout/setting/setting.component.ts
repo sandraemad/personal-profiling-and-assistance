@@ -3,14 +3,14 @@ import { UserProfileService } from '../../../core/services/userProfile/user-prof
 import { IUser } from '../../../core/interface/iuser';
 import Swal from 'sweetalert2';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-setting',
-  imports: [FormsModule,NgIf],
+  imports: [FormsModule,NgIf,RouterLink],
   templateUrl: './setting.component.html',
   styleUrl: './setting.component.css'
 })
@@ -53,7 +53,7 @@ changIamge(e:Event):void{
       next:(res)=>{
         this.toastrService.success("تم تحديث السؤال بنجاح", "نجاح");
         formData.delete;
-        this.router.navigate(['/setting']);
+        this.router.navigate(['/profiling']);
        
       }
     })

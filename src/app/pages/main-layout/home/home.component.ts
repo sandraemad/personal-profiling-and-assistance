@@ -7,12 +7,9 @@ import { HeaderComponent } from '../../../core/components/header/header.componen
 import { SliderComponent } from '../slider/slider.component';
 import { TestContentComponent } from '../test-content/test-content.component';
 import { GeneralSectionComponent } from '../../../shared/components/general-section/general-section.component';
-
 import { GoogleMapsModule } from '@angular/google-maps';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { IconComponent } from '../../../shared/components/icon/icon.component';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -26,8 +23,8 @@ import { ToastrService } from 'ngx-toastr';
     GeneralSectionComponent,
     GoogleMapsModule,
     CommonModule,
+    SliderComponent
  
-    IconComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

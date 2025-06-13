@@ -1,4 +1,5 @@
 .footer-contain {
+  overflow: hidden;
   position: relative; /* لضمان أن جميع العناصر بداخله تتبع الموضع النسبي */
 }
 
@@ -29,7 +30,7 @@
   position: absolute;
   right: 50%; /* محاذاة أفقية في المنتصف */
   transform: translateX(50%); /* لضبط المحاذاة */
-  top: -40px; /* رفع الشعار فوق الـ footer */
+  top: 0; /* رفع الشعار فوق الـ footer */
   z-index: 5; /* للتأكد من ظهوره فوق الـ footer */
 }
 

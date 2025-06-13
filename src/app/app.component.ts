@@ -7,10 +7,12 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NgxSpinner, NgxSpinnerComponent } from 'ngx-spinner';
+
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet, GoogleMapsModule,CommonModule,SweetAlert2Module
+    RouterOutlet, GoogleMapsModule,CommonModule,SweetAlert2Module,NgxSpinnerComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

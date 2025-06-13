@@ -14,27 +14,13 @@ export class NavbarComponent {
   private readonly platformId=inject(PLATFORM_ID);
  public readonly UserProfileService=inject(UserProfileService);
  profileAdminData:IUser={} as IUser;
-  isLogin(): boolean {
-    if (isPlatformBrowser(this.platformId)) {
-      return true;
-      // if (localStorage.getItem('token') !== null) {
-      //   this.UserProfileService.getProfileUser().subscribe({
-      //     next:(res)=>{
-      //       console.log(res.data);
-      //       this.profileAdminData=res.data;
-      //     }
-      //   })
-      //   return true;
-      // }
-      // else{
-      //   return false;
-      // }
-    }
-    else {
-      return false;
-    }
-   
+isLogin(): boolean {
+  if (isPlatformBrowser(this.platformId)) {
+    return localStorage.getItem('token') !== null;
   }
+  return false;
+}
+
     mentalTips: string[] = [
       '🧘‍♀️ خذ نفسًا عميقًا.. الراحة تبدأ من النفس.',
       '🌞 لا تنسَ أن تخرج إلى ضوء الشمس كل يوم.',
@@ -50,6 +36,16 @@ export class NavbarComponent {
     selectedTip: string = '';
   
     ngOnInit(): void {
+      if (this.isLogin()) {
+    this.UserProfileService.getProfileUser().subscribe({
+      next: (res) => {
+        this.profileAdminData = res.data;
+      },
+      error: (err) => {
+        console.error('Error loading profile:', err);
+      }
+    });
+  }
       this.getRandomTip();
      
     }

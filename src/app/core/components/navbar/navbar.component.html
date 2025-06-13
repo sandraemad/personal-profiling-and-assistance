@@ -1,53 +1,7 @@
-<!-- <nav class="navbar navbar-expand-lg">
-  <div class="container">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item pe-4">
-          <a
-            class="nav-link active text-white position-relative pb-0"
-            aria-current="page"
-            [routerLink]="['/login']"
-          >
-            تسجيل الدخول</a
-          >
-        </li>
-        <li class="nav-item pe-4">
-          <a
-            class="nav-link active text-white position-relative pb-0"
-            aria-current="page"
-            [routerLink]="['/home']"
-          >
-            الصفحه الرئيسية</a
-          >
-        </li>
-        <li class="nav-item pe-4">
-          <a
-            class="nav-link text-white"
-            [routerLink]="['/about']"
-            routerLinkActive="router-link-active"
-            >نبذه عنا</a
-          >
-        </li>
-        <li class="nav-item pe-4">
-          <a class="nav-link text-white" [routerLink]="['/contact-us']"
-            >اتصل بنا</a
-          >
-        </li>
-        <li class="nav-item pe-4">
-          <a class="nav-link text-white" [routerLink]="['/tests']"
-            >الاختبارات</a
-          >
-        </li>
-      </ul>
-    </div>
-    <img src="/images/logo.png" alt="logo" class="logo" />
-  </div>
-</nav> -->
-
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light ">
+<nav class="navbar navbar-expand-lg navbar-light  ">
   <!-- Container wrapper -->
-  <div class="container-fluid ">
+  <div class="container-fluid  ">
   
 
     <!-- Collapsible wrapper -->
@@ -58,38 +12,36 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         
 
-        @if(isLogin()){
-          <li class="nav-item dropdown">
-            <!-- <a class="nav-link dropdown-toggle d-flex align-items-center"
-               href="#" id="navbarDropdownMenuLink"
-               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            
-              <img
-              *ngIf="profileAdminData.profilePicture"
-              [src]="'data:image/' + profileAdminData.profilePictureType + ';base64,' + profileAdminData.profilePicture"
-                class="rounded-circle"
-                width="45"
-                height="45"
-                alt="Avatar"
-                loading="lazy"
-              />
-            </a> -->
-          
-            <ul class="dropdown-menu dropdown-menu-end text-end" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" [routerLink]="['/profiling']">ملفي</a></li>
-              <li><a class="dropdown-item" [routerLink]="['/setting']">الإعدادات</a></li>
-              <li><a class="dropdown-item" (click)="UserProfileService.loggout()">تسجيل الخروج</a></li>
-            </ul>
-          </li>
-          
+     <!-- لو المستخدم مسجل دخول -->
+<li class="nav-item dropdown" *ngIf="isLogin()">
+  <a class="nav-link dropdown-toggle d-flex align-items-center"
+     href="#" id="navbarDropdownMenuLink"
+     role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <img
+      *ngIf="profileAdminData?.profilePicture"
+      [src]="'data:image/' + profileAdminData.profilePictureType + ';base64,' + profileAdminData.profilePicture"
+      class="rounded-circle"
+      width="45"
+      height="45"
+      alt="Avatar"
+      loading="lazy"
+    />
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end text-end" aria-labelledby="navbarDropdownMenuLink">
+    <li><a class="dropdown-item" [routerLink]="['/profiling']">ملفي</a></li>
+    <li><a class="dropdown-item" [routerLink]="['/setting']">الإعدادات</a></li>
+    <li><a class="dropdown-item" (click)="UserProfileService.loggout()">تسجيل الخروج</a></li>
+  </ul>
+</li>
 
-        }
-        @else{
-          <li class="nav-item">
-            <a class="nav-link d-flex flex-column text-center " aria-current="page" [routerLink]="['/login']">  <i class="fas fa-right-to-bracket fa-lg my-2"></i><span class="small">تسجيل الدخول</span></a>
-          </li>
+<!-- لو المستخدم مش مسجل دخول -->
+<li class="nav-item" *ngIf="!isLogin()">
+  <a class="nav-link d-flex flex-column text-center" [routerLink]="['/login']">
+    <i class="fas fa-right-to-bracket fa-lg my-2"></i>
+    <span class="small">تسجيل الدخول</span>
+  </a>
+</li>
 
-        }
         
 
 
@@ -114,7 +66,7 @@
                     class="notification-badge position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
               </span>
             </i>
-            <span class="small">Notifications</span>
+            <span class="small">الاشعارات</span>
           </a>
         
           <!-- Tooltip-like box for the tip -->
@@ -131,15 +83,43 @@
 
     </div>
    
-    <div class="logo-container">
+    <!-- <div class="logo-container">
       <a  class="dark-mode-toggle" (click)="changMode(); $event.preventDefault()">
         <i class="fas fa-cloud-moon" ></i>
       </a>
       <img src="/images/logo.png" alt="logo" class="logo" />
   
-    </div>
+    </div> -->
+<div class="logo-container d-flex align-items-center  justify-content-between justify-content-lg-start">
+  <a class="dark-mode-toggle me-3" (click)="changMode(); $event.preventDefault()">
+    <i class="fas fa-cloud-moon"></i>
+  </a>
+  <img src="/images/logo.png" alt="logo" class="logo" />
+</div>
+
+
+
     
  
   </div>
  
+</nav>
+<!-- Bottom Navbar for Mobile -->
+<nav class="bottom-nav d-lg-none d-flex justify-content-around">
+  <a class="nav-link text-center" [routerLink]="['/home']">
+    <i class="fas fa-home fa-lg d-block"></i>
+    <span class="small">الرئيسية</span>
+  </a>
+  <a class="nav-link text-center" [routerLink]="['/about']">
+    <i class="fas fa-user-friends fa-lg d-block"></i>
+    <span class="small">نبذة عنا</span>
+  </a>
+  <a class="nav-link text-center" [routerLink]="['/tests']">
+    <i class="fas fa-brain fa-lg d-block"></i>
+    <span class="small">الاختبارات</span>
+  </a>
+  <a class="nav-link text-center" [routerLink]="['/contact-us']">
+    <i class="fas fa-comment-dots fa-lg d-block"></i>
+    <span class="small">اتصل بنا</span>
+  </a>
 </nav>

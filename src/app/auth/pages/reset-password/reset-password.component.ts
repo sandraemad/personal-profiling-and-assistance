@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AthuService, ResetPasswordRequest } from './../../services/athu.service';
-import { FormsModule } from '@angular/forms';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,28 +14,30 @@ import { ActivatedRoute, Router } from '@angular/router';
   providers: [AthuService, ToastrService],
   standalone: true,
 })
-export class ResetPasswordComponent {
-
+export class ResetPasswordComponent implements OnInit {
   email: string = '';
   otpCode: string = '';
   newPassword: string = '';
   confirmPassword: string = '';
   responseMessage: string = '';
 
+  private platformId = inject(PLATFORM_ID);
+
   constructor(
-    private AthuService: AthuService,
+    private accountService: AthuService,
     private toastr: ToastrService,
-    private route: ActivatedRoute,
     private router: Router
-  ) {
-    this.route.queryParams.subscribe(params => {
-      this.email = params['email'] || '';
+  ) {}
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.email = sessionStorage.getItem('resetEmail') || '';
       if (!this.email) {
         this.responseMessage = 'لا يمكنك الدخول على هذه الصفحة مباشرة.';
         this.toastr.error(this.responseMessage);
         this.router.navigate(['/login']);
       }
-    });
+    }
   }
 
   resetPassword() {
@@ -56,33 +59,30 @@ export class ResetPasswordComponent {
       newPassword: this.newPassword
     };
 
-    this.AthuService.resetPassword(requestBody).subscribe({
-      next: (res) => {
-        this.responseMessage = res.errorMessage || 'تم تغيير كلمة المرور بنجاح';
-        this.toastr.success(this.responseMessage);
-        this.router.navigate(['/login']);
+    this.accountService.resetPassword(requestBody).subscribe({
+      next: (res: any) => {
+        if (res.success) {
+          this.responseMessage = 'تم تغيير كلمة المرور بنجاح.';
+          this.toastr.success(this.responseMessage);
+          if (isPlatformBrowser(this.platformId)) {
+            sessionStorage.removeItem('resetEmail');
+          }
+          this.router.navigate(['/login']);
+        } else {
+          this.responseMessage =
+            res.errorMessage === 'User not found.'
+              ? 'هذا البريد الإلكتروني غير موجود.'
+              : res.errorMessage === 'Invalid code.'
+              ? 'رمز التحقق غير صحيح.'
+              : res.errorMessage || 'حدث خطأ أثناء تغيير كلمة المرور.';
+          this.toastr.error(this.responseMessage);
+        }
       },
       error: (err) => {
-        if (err.error?.message === 'User not found.') {
-          this.responseMessage = 'هذا البريد الإلكتروني غير موجود';
-        } else {
-          this.responseMessage = err.error?.message || 'حدث خطأ أثناء الاتصال بالخادم.';
-        }
+        this.responseMessage = err.error?.message || 'حدث خطأ أثناء الاتصال بالخادم.';
         this.toastr.error(this.responseMessage);
         console.error(err);
       }
     });
-  }
-  darkMode: boolean = false;
-  changMode(): void {
-    this.darkMode = !this.darkMode;
-    
-    if (this.darkMode) {
-      document.body.classList.add('dark-mode');
-      document.body.classList.remove('light-mode');
-    } else {
-      document.body.classList.add('light-mode');
-      document.body.classList.remove('dark-mode');
-    }
   }
 }

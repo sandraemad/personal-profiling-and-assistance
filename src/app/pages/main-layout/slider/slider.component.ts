@@ -17,23 +17,23 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 export class SliderComponent  {
   @ViewChild('swiperContainer', { static: false }) swiperContainer!: ElementRef;
 
-  // ngAfterViewInit() {
-  //   new Swiper(this.swiperContainer.nativeElement, {
-  //     modules: [Navigation, Pagination, Autoplay],
-  //     direction: 'vertical',
-  //     loop: true,
-  //     autoplay: {
-  //       delay: 1000,
-  //       disableOnInteraction: false,
-  //     },
-  //     navigation: {
-  //       nextEl: '.swiper-button-next',
-  //       prevEl: '.swiper-button-prev',
-  //     },
-  //     pagination: {
-  //       el: '.swiper-pagination',
-  //       clickable: true,
-  //     },
-  //   });
-  // }
+  ngAfterViewInit() {
+    new Swiper(this.swiperContainer.nativeElement, {
+      modules: [Navigation, Pagination, Autoplay],
+      direction: 'vertical',
+      loop: true,
+      autoplay: {
+        delay: 1000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  }
 }

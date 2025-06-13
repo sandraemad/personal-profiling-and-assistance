@@ -78,6 +78,7 @@ form {
 }
 
 .input-field input {
+  text-align: right;
   background: none;
   outline: none;
   border: none;
@@ -376,28 +377,53 @@ form {
 .text-center .btn-link:hover {
   text-decoration: underline;
 }
-@media (max-width: 570px) {
-  form {
-    padding: 0 1.5rem;
-  }
-
-  .image {
-    display: none;
-  }
-  .panel .content {
-    padding: 0.5rem 1rem;
-  }
-  .container-fluid {
-    padding: 1.5rem;
-  }
-
-  .container-fluid:before {
-    bottom: 72%;
-    left: 50%;
-  }
-
-  .container-fluid.sign-up-mode:before {
-    bottom: 28%;
-    left: 50%;
-  }
+/* زر الوضع الليلي أعلى يمين */
+.dark-mode-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  color: #000;
+  font-size: 1.6rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
+.dark-mode .dark-mode-btn{
+  color:#fff;
+}
+.modal-dialog{
+  direction: rtl;
+}
+.modal-content {
+  text-align: right;
+}
+
+.modal-header, .modal-body, .modal-footer, .form-control {
+  direction: rtl;
+}
+
+.close {
+  float: left;
+}
+body.dark-mode .forms-container{
+  background-color: #000;
+  color:#fff ;
+}
+
+.input-error-message {
+  background-color: #fee2e2; /* خلفية وردية خفيفة */
+  color: #dc2626; /* أحمر واضح للنص */
+  font-size: 0.875rem; /* text-sm */
+  margin-top: 4px; /* mt-1 */
+  margin-inline-start: 8px; /* ms-2 */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 12px; /* كيرف ناعم */
+  border: 1px solid #fecaca; /* خط حدود بنفس لون الخلفية */
+  width: 50%;
+  direction: rtl;        /* هذا يجعل النص والرمز من اليمين لليسار */
+  
+}
+

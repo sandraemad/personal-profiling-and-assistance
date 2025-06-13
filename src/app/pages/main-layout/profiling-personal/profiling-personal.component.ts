@@ -1,7 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { HomeComponent } from '../home/home.component';
 import { Router, RouterLink } from '@angular/router';
-import { HeaderComponent } from '../../../core/components/header/header.component';
 import { UserProfileService } from '../../../core/services/userProfile/user-profile.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +8,7 @@ import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-profiling-personal',
-  imports: [FormsModule,DatePipe],
+  imports: [FormsModule,DatePipe,RouterLink],
   templateUrl: './profiling-personal.component.html',
   styleUrl: './profiling-personal.component.css',
 })

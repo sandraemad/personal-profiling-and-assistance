@@ -24,7 +24,7 @@
             <div data-aos="zoom-in" class="w-100">
               <div class="question-container">
                 <div class="question">
-                  {{$index}}
+                  {{$index+1}}.
                  {{question.questioncontent}}
                 </div>
                 <div class="answers">
@@ -33,7 +33,7 @@
                       type="radio"
                       [name]="'q'+question.questionId"
                       value="أبداً"
-                      (click)="showResult(0)"
+                      (click)="showResult(question.questionId,0)"
                     />
                     {{question.choices[0].choiceContent}}
                   </label>
@@ -42,7 +42,7 @@
                       type="radio"
                       [name]="'q'+question.questionId"
                       value="بعض الأيام"
-                      (click)="showResult(1)"
+                      (click)="showResult(question.questionId,1)"
                     />
                     {{question.choices[1].choiceContent}}
                   </label>
@@ -51,7 +51,7 @@
                       type="radio"
                       [name]="'q'+question.questionId"
                       value="أكثر من نصف الأيام"
-                      (click)="showResult(2)"
+                      (click)="showResult(question.questionId,2)"
                     />
                     {{question.choices[2].choiceContent}}
                   </label>
@@ -60,7 +60,7 @@
                       type="radio"
                       [name]="'q'+question.questionId"
                       value="كل يوم تقريباً"
-                      (click)="showResult(3)"
+                      (click)="showResult(question.questionId,3)"
                     />
                     {{question.choices[3].choiceContent}}
                   </label>
@@ -72,7 +72,7 @@
           
           </div>
         </div>
-        <button (click)="toggleResult()">إرسال</button>
+        <button (click)="toggleResult()" class="start-recording-button">📤 إرسال</button>
       </div>
 
 
@@ -87,7 +87,9 @@
         <img src="/images/tests-depression-illustration-3.svg" alt="" />
       </div>
     </div>
-    <div class="alert alert-info shadow rounded-3 p-4 mt-4 w-50 text-center" [style.display]="showResultComponent ? 'block' : 'none'">
+
+    
+    <div class="alert alert-info shadow rounded-3 p-4 mt-4 mb-4   text-center responsive-result-box" [style.display]="showResultComponent ? 'block' : 'none'">
       <h5 class="mb-3">
         <i class="fas fa-heartbeat me-2 text-primary"></i>
         نتيجة الاختبار {{ testName }}

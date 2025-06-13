@@ -1,9 +1,10 @@
 
 <app-header [backgroudClssImge]="'header-communication-skills'">
   <div class="typed-container">
-    <h1 class="typed-cursor">مهارات التواصل</h1>
+    <h1 class="typed-cursor">{{testName}}</h1>
   </div>
 </app-header>
+
 <div class="container position-relative all_contant" data-aos="zoom-in">
   <h2>هل تتمتع بمهارات التواصل الفعّال؟</h2>
   <p>
@@ -17,163 +18,156 @@
         <div
           class="col-12 d-flex justify-content-center align-items-center flex-column"
         >
-          <div class="w-100" data-aos="zoom-in">
-            <div class="question-container">
-              <div class="question">1.عند التعامل مع الاخرين تبتسم</div>
-              <div class="answers">
-                <label class="answer">
+          @for(question of questions ; track $index){
+            <div data-aos="zoom-in" class="w-100">
+              <div class="question-container">
+                <div class="question">
+                  {{$index+1}}.
+                 {{question.questioncontent}}
+                </div>
+               <div class="answers">
+                  <label class="answer">
                   <input
                     type="radio"
-                    name="q1"
-                    value="نادرا"
-                    (click)="showResult(1)"
+                    [name]="'q'+question.questionId"
+                    value="0"
+                    (click)="showResult(question.questionId,1)"
                   />
-                  نادرا
+                 {{question.choices[0].choiceContent}} 
                 </label>
                 <label class="answer">
                   <input
                     type="radio"
-                    name="q1"
-                    value="أحياناً"
-                    (click)="showResult(2)"
+                    [name]="'q'+question.questionId"
+                    value="1"
+                    (click)="showResult(question.questionId,2)"
                   />
-                  أحياناً
+                {{question.choices[1].choiceContent}}    
                 </label>
                 <label class="answer">
                   <input
                     type="radio"
-                    name="q1"
-                    value="عادة"
-                    (click)="showResult(3)"
+                    [name]="'q'+question.questionId"
+                    value="2"
+                    (click)="showResult(question.questionId,3)"
                   />
-                  عادة
+                  {{question.choices[2].choiceContent}}
                 </label>
-              </div>
+                </div>
+                </div>
+                </div>
+          }
+         
             </div>
-          </div>
-          <div class="w-100" data-aos="zoom-in">
-            <div class="question-container">
-              <div class="question">
-                2. عند التعامل مع الاخرين تنظر الى الأخر و تلتقى عينيك بعينه
-              </div>
-              <div class="answers">
-                <label class="answer">
-                  <input
-                    type="radio"
-                    name="q2"
-                    value="نادرا"
-                    (click)="showResult(1)"
-                  />
-                  نادرا
-                </label>
-                <label class="answer">
-                  <input
-                    type="radio"
-                    name="q2"
-                    value="أحياناً"
-                    (click)="showResult(2)"
-                  />
-                  أحياناً
-                </label>
-                <label class="answer">
-                  <input
-                    type="radio"
-                    name="q2"
-                    value="عادة"
-                    (click)="showResult(3)"
-                  />
-                  عادة
-                </label>
-              </div>
-            </div>
-          </div>
+          </div> 
+            <button (click)="handleClick()" class="start-recording-button">
+              {{ is_sent ? '✅ جاهز؟ خلينا نكمل بالتسجيل' : '📤 إرسال' }}
+            </button>
+</div>
+<div class="img-test_1 d-none d-lg-block">
+        <img src="/images/tests-depression-illustration-1.svg" alt="" />
+      </div>
 
-          <div class="w-100" data-aos="zoom-in">
-            <div class="question-container">
-              <div class="question">
-                3. عند التعامل مع الاخرين تجلس بجوار الشخص الأخر أو تدير جسدك
-                أليه نصف دوره
-              </div>
-              <div class="answers">
-                <label class="answer">
-                  <input
-                    type="radio"
-                    name="q3"
-                    value="نادرا"
-                    (click)="showResult(1)"
-                  />
-                  نادرا
-                </label>
-                <label class="answer">
-                  <input
-                    type="radio"
-                    name="q3"
-                    value="أحياناً"
-                    (click)="showResult(2)"
-                  />
-                  أحياناً
-                </label>
-                <label class="answer">
-                  <input
-                    type="radio"
-                    name="q3"
-                    value="عادة"
-                    (click)="showResult(3)"
-                  />
-                  عادة
-                </label>
-              </div>
-            </div>
-          </div>
+      <div class="img-test_3 d-none d-lg-block">
+        <img src="/images/tests-depression-illustration-3.svg" alt="" />
+      </div>
+    </div>
+
+    
+    <div class="alert alert-info shadow rounded-3 p-4 mt-4 mb-4   text-center responsive-result-box" [style.display]="resultComponent? 'block' : 'none'">
+      <h5 class="mb-3">
+        <i class="fas fa-heartbeat me-2 text-primary"></i>
+          نتيجة الاختبار   {{ testName }}
+      </h5>
+        <p class="mb-2">
+    <strong>نتيجة اختبار مهارات التواصل:</strong>
+    {{ result }}
+  </p>
+
+  <p class="mb-2">
+    <strong> صورة اختبار مهارات التواصل:</strong>
+    {{ image }}
+  </p>
+
+  <p class="mb-3">
+    <strong> تسجيل صوتي لاختبار مهارات التواصل:</strong>
+    {{ audio }}
+  </p>
+    
+    
+
+    
+      <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+        <button class="btn btn-outline-primary" (click)="findNearestClinic($event)">
+          <i class="fas fa-map-marker-alt me-2"></i>
+          أقرب عيادة
+        </button>
+    
+        <button class="btn btn-primary"  [routerLink]="'/tests'">
+          <i class="fas fa-redo me-2"></i>
+          أعد الاختبار
+        </button>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <div class="w-100">
+          <iframe
+            *ngIf="mapUrl"
+            [src]="mapUrl"
+            width="100%"
+            height="450"
+            style="border: 0"
+            allowfullscreen
+            loading="lazy"
+          >
+          </iframe>
+        </div>
+      </div>
+    </div>
 
 
-      <button
-  (click)="showCamera()"
-  style="padding: 15px 30px; font-size: 18px; border-radius: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
-  افتح الكاميرا 📷
-</button>
 
-<div *ngIf="isCameraVisible" style="margin-top: 20px;">
-  <video #video autoplay playsinline width="400" height="300" style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2);"></video>
 
-  <br />
 
-  <button
-    (click)="closeCamera()"
-    style="margin-top: 10px; padding: 10px 20px; font-size: 16px; border-radius: 8px; background-color: #f44336; color: white; border: none; cursor: pointer;">
-    اغلق الكاميرا ❌
-  </button>
-  <div>
-    <button (click)="initiateRecording()" class="btn btn-primary" *ngIf="!recording" style="cursor: pointer;background-color: green;color: white;font-size: 40px;"> Start Recording </button>
-    <button (click)="stopRecording()" class="btn btn-danger" *ngIf="recording" style="cursor: pointer;background-color: red;color: white;font-size: 40px;"> Stop Recording </button>
-    <audio controls="" *ngIf="url">
-    <source [src]="sanitize(url)" type="audio/wav">
-    </audio>
+</div>
+   <div class="recorder-overlay" *ngIf="showRecorder">
+  <div class="recorder-box">
+    <button class="close-btn" (click)="closeRecorder()">✖️</button>
+    <h2>🧠 إنت حاسس بإيه دلوقتي؟</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="ميكروفون">
+
+    <button
+      class="start-button"
+      *ngIf="!isRecording && !blobUrl"
+      (click)="start()">
+      افتح الكاميرا وابدأ التسجيل 🎥🎙️
+    </button>
+
+    <button
+      class="cancel-button"
+      *ngIf="!isRecording && blobUrl"
+      (click)="clearRecordedData()">
+      حذف التسجيل 🗑️
+    </button>
+
+    <div *ngIf="isRecording && !blobUrl">
+      <span style="font-size: 18px; color: #333;">{{recordedTime}}</span>
+    </div>
+
+    <div>
+      <audio *ngIf="!isRecording && blobUrl" controls>
+        <source [src]="blobUrl" type="audio/webm">
+      </audio>
+    </div>
+
+    <div *ngIf="isCameraVisible" style="margin-top: 20px;">
+      <video #video autoplay playsinline width="100%" height="300"
+        style="border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.2);"></video>
+    </div>
+
+    <button class="stop-button" *ngIf="isRecording" (click)="stop()">⏹️ إيقاف التسجيل</button>
+    <button class="send-button" *ngIf="blobUrl" (click)="sendAudioToApi()">✅ إرسال</button>
   </div>
-
-
-
-
 </div>
-
-<div class="img-test_3 d-none d-lg-block">
-  <img src="/images/tests-depression-illustration-3.svg" alt="" />
-</div>
-</div>
-</div>
-<!-- <div class="overlay" *ngIf="showRecorder">
-<div class="recorder-box">
-<button class="close-btn" (click)="closeRecorder()">✖️</button>
-<h2>🧠 إنت حاسس بإيه دلوقتي؟</h2>
-<img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="ميكروفون">
-<div class="recorder-buttons">
-
-<button (click)="startRecording()">ابدأ التسجيل</button>
-<button (click)="stopRecording()">أوقف التسجيل</button>
-<button (click)="uploadRecording()" [disabled]="!audioBlob">ارفع التسجيل</button>
-
-<audio controls *ngIf="audioUrl" [src]="audioUrl"></audio>
-
-</div>
-</div>
-</div> -->

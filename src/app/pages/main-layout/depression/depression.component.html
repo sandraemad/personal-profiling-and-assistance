@@ -20,7 +20,7 @@
           @for(question of questions ; track $index){
             <div data-aos="zoom-in" class="w-100">
               <div class="question-container">
-                <div class="question">{{$index}}
+                <div class="question">{{$index+1}}.
                  {{question.questioncontent}}
                 </div>
                 <div class="answers">
@@ -29,7 +29,7 @@
                       type="radio"
                       [name]="'q'+question.questionId"
                       value="أبداً"
-                      (click)="showResult(0)"
+                      (click)="showResult(question.questionId, 0)"
                     />
                     {{question.choices[0].choiceContent}}
                   </label>
@@ -39,7 +39,7 @@
                       [name]="'q'+question.questionId"
                      
                       value="قليلاً"
-                      (click)="showResult(1)"
+                      (click)="showResult(question.questionId, 1)"
                     />
                     {{question.choices[1].choiceContent}}
                   </label>
@@ -48,7 +48,7 @@
                       type="radio"
                       [name]="'q'+question.questionId"
                       value="أحياناً"
-                      (click)="showResult(2)"
+                      (click)="showResult(question.questionId, 2)"
                     />
                     {{question.choices[2].choiceContent}}
                   </label>
@@ -57,7 +57,7 @@
                       type="radio"
                       [name]="'q'+question.questionId"
                       value="غالباً"
-                      (click)="showResult(3)"
+                      (click)="showResult(question.questionId, 3)"
                     />
                     {{question.choices[3].choiceContent}}
                   </label>
@@ -71,27 +71,9 @@
           </div>
         </div>
 
-        <button (click)="toggleResult()">إرسال</button>
+        <button (click)="toggleResult()" class="start-recording-button ">📤 إرسال</button>
 
-        <app-result
-          [score]="cnt"
-          [maxScore]="27"
-          [style.display]="showResultComponent ? 'block' : 'none'"
-          ><div class="box m-5">
-            <h3>ماذا يعني ذلك ؟</h3>
-            <p>
-              0-4: لا يوجد اكتئاب.
-              <br />
-              5-9: اكتئاب خفيف.
-              <br />
-              10-14: اكتئاب متوسط.
-              <br />
-              15-19: اكتئاب متوسط إلى شديد.
-              <br />
-              20-27: اكتئاب شديد.
-            </p>
-          </div></app-result
-        >
+       
       </div>
 
       <div class="img-test_1 d-none d-lg-block">
@@ -102,5 +84,45 @@
         <img src="/images/tests-depression-illustration-3.svg" alt="" />
       </div>
     </div>
+
+
+      <div class="alert alert-info shadow rounded-3 p-4 mt-4 mb-4   text-center responsive-result-box" [style.display]="showResultComponent ? 'block' : 'none'">
+      <h5 class="mb-3">
+        <i class="fas fa-heartbeat me-2 text-primary"></i>
+        نتيجة الاختبار {{ testName }}
+      </h5>
+    
+      <strong class="text-primary fs-5">{{ result }}</strong>
+    
+      <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+        <button class="btn btn-outline-primary" (click)="findNearestClinic($event)">
+          <i class="fas fa-map-marker-alt me-2"></i>
+          أقرب عيادة
+        </button>
+    
+        <button class="btn btn-primary"  [routerLink]="'/tests'">
+          <i class="fas fa-redo me-2"></i>
+          أعد الاختبار
+        </button>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <div class="w-100">
+          <iframe
+            *ngIf="mapUrl"
+            [src]="mapUrl"
+            width="100%"
+            height="450"
+            style="border: 0"
+            allowfullscreen
+            loading="lazy"
+          >
+          </iframe>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

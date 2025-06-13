@@ -26,6 +26,9 @@ a{
   font-size:17px;
 
 }
+a:hover{
+  color: #007bff;
+}
 li{
   margin-right:25px;
 }
@@ -52,4 +55,67 @@ li{
   color: #007bff !important;
   font-weight: 500;
   border-right: 3px solid #007bff;
+}
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 60px;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+  z-index: 1050;
+  padding: 5px 0;
+}
+
+.bottom-nav a {
+  color: #888;
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.bottom-nav a:hover,
+.bottom-nav a.active {
+  color: #007bff;
+}
+
+.bottom-nav i {
+  display: block;
+  margin-top: 15px;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* الوضع الطبيعي للشاشات الكبيرة */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: auto;
+  width: auto; /* أو خليه بدون width علشان يكون تلقائي */
+}
+
+/* الوضع الخاص بالشاشات الصغيرة */
+@media (max-width: 991.98px) {
+  .logo-container {
+    width: 100%;
+  }
+}
+
+.logo {
+  width: 75px;
+  height: 75px;
+}
+
+.dark-mode-toggle {
+  font-size: 28px;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  transform: rotate(20deg) scale(1.2);
+  color: #000;
 }

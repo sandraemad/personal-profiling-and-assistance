@@ -49,20 +49,6 @@ h2 {
   color: #000;
 }
 
-button {
-  background-color: #003366;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #002244;
-}
-
 .img-test_3 {
   position: absolute;
   bottom: 0;
@@ -97,4 +83,27 @@ button:hover {
   .img-test_1,
   .img-test_3 {
     display: none !important;   }
+}
+.start-recording-button {
+  background: linear-gradient(135deg, #1820c9 0%, #2575fc 100%);
+  color: #fff;
+  font-size: 18px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.3s;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.responsive-result-box {
+  width: 100%;
+  margin: 20px auto;
+}
+
+@media (min-width: 992px) {
+  .responsive-result-box {
+    width: 50%;
+  }
 }

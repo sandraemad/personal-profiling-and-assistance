@@ -49,7 +49,7 @@ h2 {
   color: #000;
 }
 
-button {
+/* button {
   background-color: #003366;
   color: white;
   border: none;
@@ -57,7 +57,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
+} */
 
 button:hover {
   background-color: #002244;
@@ -68,21 +68,34 @@ button:hover {
   bottom: 0;
   left: 20px;
 }
+.responsive-result-box {
+  width: 100%;
+  margin: 0 auto; /* علشان ييجي في النص */
+}
 @media (min-width: 640px) {
   .all_contant {
     width: 800px;
+  }
+   .responsive-result-box {
+    width: 100%;
   }
 }
 
 @media (min-width: 1200px) {
   .all_contant {
-    width: 1000%;
+    width: 100%;
+  }
+   .responsive-result-box {
+    width: 50%;
   }
 }
 @media (max-width: 768px) {
   .answers {
     flex-direction: column;
     gap: 0.5rem;
+  }
+   .responsive-result-box {
+    width: 100%;
   }
 
   .answer {
@@ -97,4 +110,23 @@ button:hover {
   .img-test_1,
   .img-test_3 {
     display: none !important;   }
+}
+.responsive-result-box {
+  width: 50%;
+  margin: 0 auto; /* علشان ييجي في النص */
+}
+
+
+.start-recording-button {
+  background: linear-gradient(135deg, #1820c9 0%, #2575fc 100%);
+  color: #fff;
+  font-size: 18px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.3s;
+  font-weight: bold;
+  letter-spacing: 1px;
 }

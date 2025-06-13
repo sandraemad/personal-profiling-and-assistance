@@ -50,7 +50,7 @@ export const routes: Routes = [
             title: 'القلق ',
           },
           {
-            path: 'communication-skills',
+            path: 'communication-skills/:id',
             loadComponent: () =>
               import('./pages/main-layout/communication-skills/communication-skills.component').then((m) => m.CommunicationSkillsComponent),
             title: 'مهارات التواصل',
